@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_5" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Amiibo Collection View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AmiiboCollectionViewController" customModule="AmiiboCollection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mo8-2m-SQm">
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btc-L5-xRA" userLabel="titleView">
+                                        <rect key="frame" x="0.0" y="0.0" width="834" height="167"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amiibo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-fV-T2E">
+                                                <rect key="frame" x="237.5" y="41.5" width="359" height="83.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="iZL-fV-T2E" secondAttribute="height" multiplier="4.3:1" id="nzi-WE-wwD"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="iZL-fV-T2E" firstAttribute="height" secondItem="btc-L5-xRA" secondAttribute="height" multiplier="0.5" id="4EE-SY-Dtu"/>
+                                            <constraint firstItem="iZL-fV-T2E" firstAttribute="centerY" secondItem="btc-L5-xRA" secondAttribute="centerY" id="M2z-Zz-A8Y"/>
+                                            <constraint firstItem="iZL-fV-T2E" firstAttribute="centerX" secondItem="btc-L5-xRA" secondAttribute="centerX" id="wpX-c8-GaG"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kv9-Xp-VK1" userLabel="collectionView">
+                                        <rect key="frame" x="41.5" y="167" width="751" height="945"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vUX-4m-WI1">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="amiiboCell" reuseIdentifier="amiiboCell" id="koO-e4-ZWi" customClass="AmiiboCell" customModule="AmiiboCollection" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kU9-hm-lq2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wq8-X7-Hes" userLabel="stackView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvi-3k-r5b" userLabel="imageView">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="77"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mario" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Sl-XGp" userLabel="nameLabel">
+                                                                    <rect key="frame" x="0.0" y="77" width="128" height="51"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.94568707190000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="dvi-3k-r5b" firstAttribute="height" secondItem="Wq8-X7-Hes" secondAttribute="height" multiplier="0.6" id="C7y-Hr-HgD"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Wq8-X7-Hes" secondAttribute="bottom" id="96T-RJ-a2h"/>
+                                                        <constraint firstItem="Wq8-X7-Hes" firstAttribute="top" secondItem="kU9-hm-lq2" secondAttribute="top" id="Yk9-dY-4L1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Wq8-X7-Hes" secondAttribute="trailing" id="i2u-Yb-kmy"/>
+                                                        <constraint firstItem="Wq8-X7-Hes" firstAttribute="leading" secondItem="kU9-hm-lq2" secondAttribute="leading" id="rwi-xs-DVV"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="imageView" destination="dvi-3k-r5b" id="0h9-pz-5Ng"/>
+                                                    <outlet property="nameLabel" destination="sd1-Sl-XGp" id="h95-ru-4rn"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="SA4-ks-HZX"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="dxC-Vl-zLO"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="btc-L5-xRA" firstAttribute="height" secondItem="mo8-2m-SQm" secondAttribute="height" multiplier="0.15" id="7WC-nD-mkm"/>
+                                    <constraint firstItem="btc-L5-xRA" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" id="eaH-U2-yVA"/>
+                                    <constraint firstItem="kv9-Xp-VK1" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" multiplier="0.9" id="f3z-cZ-Mq0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mo8-2m-SQm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="0gi-0U-yxC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mo8-2m-SQm" secondAttribute="trailing" id="gLR-5J-lrm"/>
+                            <constraint firstItem="mo8-2m-SQm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tMB-n9-nZC"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mo8-2m-SQm" secondAttribute="bottom" id="yMa-RZ-98J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="kv9-Xp-VK1" id="HIP-gy-IK3"/>
+                        <outlet property="titleView" destination="btc-L5-xRA" id="86w-JC-rrj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="65.625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="amiibo-logo" width="1024" height="234"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
