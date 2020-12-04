@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_5" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AmiiboCollectionViewController" customModule="AmiiboCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mo8-2m-SQm">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btc-L5-xRA" userLabel="titleView">
-                                        <rect key="frame" x="0.0" y="0.0" width="834" height="167"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="115"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amiibo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-fV-T2E">
-                                                <rect key="frame" x="237.5" y="41.5" width="359" height="83.5"/>
+                                                <rect key="frame" x="71.333333333333329" y="28.666666666666668" width="247.33333333333337" height="57.666666666666657"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="iZL-fV-T2E" secondAttribute="height" multiplier="4.3:1" id="nzi-WE-wwD"/>
                                                 </constraints>
@@ -39,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kv9-Xp-VK1" userLabel="collectionView">
-                                        <rect key="frame" x="41.5" y="167" width="751" height="945"/>
+                                        <rect key="frame" x="19.666666666666657" y="115" width="351" height="651"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vUX-4m-WI1">
                                             <size key="itemSize" width="128" height="128"/>
@@ -59,12 +59,12 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvi-3k-r5b" userLabel="imageView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="77"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="76.666666666666671"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mario" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Sl-XGp" userLabel="nameLabel">
-                                                                    <rect key="frame" x="0.0" y="77" width="128" height="51"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Sl-XGp" userLabel="nameLabel">
+                                                                    <rect key="frame" x="0.0" y="76.666666666666671" width="128" height="51.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.94568707190000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -92,6 +92,7 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="btc-L5-xRA" firstAttribute="height" secondItem="mo8-2m-SQm" secondAttribute="height" multiplier="0.15" id="7WC-nD-mkm"/>
                                     <constraint firstItem="btc-L5-xRA" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" id="eaH-U2-yVA"/>
@@ -111,17 +112,161 @@
                     <connections>
                         <outlet property="collectionView" destination="kv9-Xp-VK1" id="HIP-gy-IK3"/>
                         <outlet property="titleView" destination="btc-L5-xRA" id="86w-JC-rrj"/>
+                        <segue destination="ZfH-TL-zR5" kind="presentation" identifier="showDetails" id="4iT-G7-KNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="65.625"/>
         </scene>
+        <!--Amiibo Details View Controller-->
+        <scene sceneID="Vom-er-p7D">
+            <objects>
+                <viewController storyboardIdentifier="amiiboPopoverViewController" id="ZfH-TL-zR5" customClass="AmiiboDetailsViewController" customModule="AmiiboCollection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rwd-t9-WGC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-nL-ZMx" userLabel="popoverView">
+                                <rect key="frame" x="68.333333333333329" y="243" width="253.33333333333337" height="304"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-UW-YQD" userLabel="popoverStack">
+                                        <rect key="frame" x="12.666666666666671" y="15" width="228" height="274"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="od3-E2-vNg" userLabel="imageView">
+                                                <rect key="frame" x="59.333333333333336" y="2" width="109.33333333333331" height="106.33333333333334"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="height" multiplier="1:1" id="S3n-gJ-qmf"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DU2-I8-enM" userLabel="separatorView">
+                                                <rect key="frame" x="0.0" y="119.66666666666669" width="228" height="1"/>
+                                                <color key="backgroundColor" systemColor="labelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="RJQ-Tk-ucg"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yN-0x-vQI" userLabel="detailsView">
+                                                <rect key="frame" x="31.666666666666671" y="130.66666666666669" width="164.66666666666663" height="100.33333333333331"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-3w-ibq" userLabel="nameLabel">
+                                                        <rect key="frame" x="-31.666666666666671" y="0.0" width="196.33333333333337" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Smash Bros" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0i-p2-iLt" userLabel="gameSeriesLabel">
+                                                        <rect key="frame" x="-31.666666666666671" y="28" width="196.33333333333337" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: 11/01/1991" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOY-Tv-QFD" userLabel="releaseDateLabel">
+                                                        <rect key="frame" x="-31.666666666666671" y="59.333333333333314" width="196.33333333333337" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="KOY-Tv-QFD" secondAttribute="trailing" id="7xL-nF-uj3"/>
+                                                    <constraint firstItem="ozu-3w-ibq" firstAttribute="top" secondItem="3yN-0x-vQI" secondAttribute="top" id="ClS-MO-VWC"/>
+                                                    <constraint firstItem="KOY-Tv-QFD" firstAttribute="top" secondItem="m0i-p2-iLt" secondAttribute="bottom" constant="12" id="MTI-W1-uUZ"/>
+                                                    <constraint firstItem="KOY-Tv-QFD" firstAttribute="leading" secondItem="ozu-3w-ibq" secondAttribute="leading" id="Ngw-DJ-M3C"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ozu-3w-ibq" secondAttribute="trailing" id="Tfn-3f-G7R"/>
+                                                    <constraint firstAttribute="trailing" secondItem="m0i-p2-iLt" secondAttribute="trailing" id="Xq8-7G-VgL"/>
+                                                    <constraint firstItem="m0i-p2-iLt" firstAttribute="leading" secondItem="ozu-3w-ibq" secondAttribute="leading" id="dcy-eS-U6z"/>
+                                                    <constraint firstItem="m0i-p2-iLt" firstAttribute="top" secondItem="ozu-3w-ibq" secondAttribute="bottom" constant="4" id="g5w-yB-5PF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIB-1s-jcy" userLabel="selectionView">
+                                                <rect key="frame" x="21.666666666666671" y="241" width="185" height="33"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9H-u2-cry" userLabel="selectionButton">
+                                                        <rect key="frame" x="9" y="0.0" width="166.66666666666666" height="33"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <state key="normal" title="Add to Collection">
+                                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="actionButtonPressed:" destination="ZfH-TL-zR5" eventType="touchUpInside" id="OQV-DM-sjQ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="f9H-u2-cry" firstAttribute="height" secondItem="wIB-1s-jcy" secondAttribute="height" id="AJE-H9-Z9B"/>
+                                                    <constraint firstItem="f9H-u2-cry" firstAttribute="centerX" secondItem="wIB-1s-jcy" secondAttribute="centerX" id="aAC-eq-34A"/>
+                                                    <constraint firstItem="f9H-u2-cry" firstAttribute="width" secondItem="wIB-1s-jcy" secondAttribute="width" multiplier="0.9" id="eJY-HM-Khc"/>
+                                                    <constraint firstItem="f9H-u2-cry" firstAttribute="centerY" secondItem="wIB-1s-jcy" secondAttribute="centerY" id="pd6-tc-Zs0"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ozu-3w-ibq" firstAttribute="leading" secondItem="7MC-UW-YQD" secondAttribute="leading" id="9yq-fs-22C"/>
+                                            <constraint firstItem="wIB-1s-jcy" firstAttribute="height" secondItem="7MC-UW-YQD" secondAttribute="height" multiplier="0.12" id="FZu-8T-jzg"/>
+                                            <constraint firstItem="od3-E2-vNg" firstAttribute="height" secondItem="7MC-UW-YQD" secondAttribute="height" multiplier="0.4" id="f18-6g-XN4"/>
+                                            <constraint firstItem="DU2-I8-enM" firstAttribute="width" secondItem="7MC-UW-YQD" secondAttribute="width" id="gSF-SP-Tkn"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-mf-zZA" customClass="CheckmarkView" customModule="AmiiboCollection" customModuleProvider="target">
+                                        <rect key="frame" x="91.000000000000028" y="34.333333333333314" width="71.333333333333343" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4fA-mf-zZA" secondAttribute="height" multiplier="1:1" id="fyH-m5-gvl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="7MC-UW-YQD" firstAttribute="height" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="0.9" id="2dX-V9-keI"/>
+                                    <constraint firstItem="7MC-UW-YQD" firstAttribute="centerY" secondItem="OGI-nL-ZMx" secondAttribute="centerY" id="AGJ-ON-7ZJ"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="centerY" secondItem="od3-E2-vNg" secondAttribute="centerY" id="M2g-cZ-PyC"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="width" multiplier="0.65" id="Ov9-Py-Vh1"/>
+                                    <constraint firstAttribute="width" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="1:1.2" id="RJa-9r-VfW"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="centerX" secondItem="od3-E2-vNg" secondAttribute="centerX" id="kl3-cw-h1p"/>
+                                    <constraint firstItem="7MC-UW-YQD" firstAttribute="centerX" secondItem="OGI-nL-ZMx" secondAttribute="centerX" id="lzk-ZG-FjH"/>
+                                    <constraint firstItem="7MC-UW-YQD" firstAttribute="width" secondItem="OGI-nL-ZMx" secondAttribute="width" multiplier="0.9" id="pZ4-Ap-Czb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DPU-hW-Oal"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OGI-nL-ZMx" firstAttribute="centerY" secondItem="Rwd-t9-WGC" secondAttribute="centerY" id="34O-vX-QpE"/>
+                            <constraint firstItem="OGI-nL-ZMx" firstAttribute="width" secondItem="Rwd-t9-WGC" secondAttribute="width" multiplier="0.65" id="W3Y-eC-yxy"/>
+                            <constraint firstItem="OGI-nL-ZMx" firstAttribute="centerX" secondItem="Rwd-t9-WGC" secondAttribute="centerX" id="iqp-9G-rIT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aTn-r7-5ko"/>
+                    <connections>
+                        <outlet property="actionButton" destination="f9H-u2-cry" id="gmm-o4-REn"/>
+                        <outlet property="checkmarkView" destination="4fA-mf-zZA" id="ckT-vb-hiB"/>
+                        <outlet property="gameSeriesLabel" destination="m0i-p2-iLt" id="h3t-DW-7cd"/>
+                        <outlet property="imageView" destination="od3-E2-vNg" id="yNV-sL-Y5F"/>
+                        <outlet property="nameLabel" destination="ozu-3w-ibq" id="l75-1E-AwM"/>
+                        <outlet property="popoverView" destination="OGI-nL-ZMx" id="JPz-gv-fID"/>
+                        <outlet property="releaseDateLabel" destination="KOY-Tv-QFD" id="YZ3-nW-DVh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8R-4w-DW3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="65"/>
+        </scene>
     </scenes>
     <resources>
         <image name="amiibo-logo" width="1024" height="234"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -11,18 +11,8 @@ import UIKit
 
 extension UIColor {
     
-    static var base: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var tint1: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var tint2: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var tint3: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var shade1: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var shade2: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var shade3: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    
-    static var complement: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var triad1: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var triad2: UIColor { return try! UIColor.color(withHexValue: "#ffffff") }
-    static var triad2Faded: UIColor { return try! UIColor.color(withHexValue: "#ffffff", alpha: 0.5) }
+    static var nintendoGreen: UIColor { return try! UIColor.color(withHexValue: "#00ff00") }
+    static var nintendoRed: UIColor { return try! UIColor.color(withHexValue: "#ff0000") }
 }
 
 // MARK: - Hex -

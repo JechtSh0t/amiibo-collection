@@ -11,7 +11,7 @@ import Foundation
 
 protocol APIServiceDelegate {
     
-    func apiService(_ manager: APIService, didReceiveAmibos countries: [AmiiboManager.Amibo])
+    func apiService(_ manager: APIService, didReceiveAmibos countries: [AmiiboManager.Amiibo])
     func apiService(_ manager: APIService, didEncounterError error: Error, for requestType: APIService.APIRequest)
 }
 

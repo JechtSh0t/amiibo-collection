@@ -25,6 +25,9 @@
 		139ED3B7255B884A00F9BB7A /* AmiiboCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139ED3B6255B884A00F9BB7A /* AmiiboCell.swift */; };
 		139ED3BA255B8CEF00F9BB7A /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139ED3B9255B8CEF00F9BB7A /* UIImageView+Extensions.swift */; };
 		13A284EC255BB8A6003E940B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A284EB255BB8A6003E940B /* UIColor+Extensions.swift */; };
+		13B06EFA25798D6300A76BAB /* AmiiboDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06EF925798D6300A76BAB /* AmiiboDetailsViewController.swift */; };
+		13B06EFF2579977300A76BAB /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06EFE2579977300A76BAB /* CheckmarkView.swift */; };
+		13B06F03257A74D600A76BAB /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */; };
 		13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */; };
 		13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB3255BB61600611FBF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +53,9 @@
 		139ED3B6255B884A00F9BB7A /* AmiiboCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmiiboCell.swift; sourceTree = "<group>"; };
 		139ED3B9255B8CEF00F9BB7A /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		13A284EB255BB8A6003E940B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		13B06EF925798D6300A76BAB /* AmiiboDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmiiboDetailsViewController.swift; sourceTree = "<group>"; };
+		13B06EFE2579977300A76BAB /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		13F22CB3255BB61600611FBF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +121,7 @@
 				139ED3A7255B781700F9BB7A /* AmiiboManager.swift */,
 				139ED38D255B67C200F9BB7A /* AmiiboCollectionViewController.swift */,
 				139ED3B6255B884A00F9BB7A /* AmiiboCell.swift */,
+				13B06EF925798D6300A76BAB /* AmiiboDetailsViewController.swift */,
 			);
 			path = AmiiboCollection;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 			children = (
 				139ED3B9255B8CEF00F9BB7A /* UIImageView+Extensions.swift */,
 				13A284EB255BB8A6003E940B /* UIColor+Extensions.swift */,
+				13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 		13F22CB0255BB5B600611FBF /* Base UI */ = {
 			isa = PBXGroup;
 			children = (
+				13B06EFE2579977300A76BAB /* CheckmarkView.swift */,
 				13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */,
 				13F22CB3255BB61600611FBF /* BaseViewController.swift */,
 				137C1752255BE661003702B2 /* ProgressViewController.swift */,
@@ -251,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B06EFA25798D6300A76BAB /* AmiiboDetailsViewController.swift in Sources */,
 				137C1750255BE39A003702B2 /* GradientView.swift in Sources */,
 				139ED3BA255B8CEF00F9BB7A /* UIImageView+Extensions.swift in Sources */,
 				139ED38E255B67C200F9BB7A /* AmiiboCollectionViewController.swift in Sources */,
@@ -263,11 +273,13 @@
 				13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */,
 				139ED39F255B685F00F9BB7A /* APIService.swift in Sources */,
 				139ED38C255B67C200F9BB7A /* SceneDelegate.swift in Sources */,
+				13B06F03257A74D600A76BAB /* UIButton+Extensions.swift in Sources */,
 				137C1753255BE661003702B2 /* ProgressViewController.swift in Sources */,
 				137C174C255BE354003702B2 /* FadeOutAnimationController.swift in Sources */,
 				139ED3A5255B729D00F9BB7A /* BSGError.swift in Sources */,
 				139ED3A8255B781700F9BB7A /* AmiiboManager.swift in Sources */,
 				139ED3B7255B884A00F9BB7A /* AmiiboCell.swift in Sources */,
+				13B06EFF2579977300A76BAB /* CheckmarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

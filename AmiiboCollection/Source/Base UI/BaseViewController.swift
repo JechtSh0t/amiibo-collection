@@ -34,16 +34,12 @@ class BaseViewController: UIViewController {
     ///
     /// Style adjustments exclusive to light mode.
     ///
-    func lightStyle() {
-        view.backgroundColor = UIColor.base
-    }
+    func lightStyle() {}
     
     ///
     /// Style adjustments exclusive to dark mode.
     ///
-    func darkStyle() {
-        view.backgroundColor = UIColor.base
-    }
+    func darkStyle() {}
 }
 
 // MARK: - Interface Style Change -

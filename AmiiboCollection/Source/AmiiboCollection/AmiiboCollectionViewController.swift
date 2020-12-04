@@ -15,7 +15,7 @@ final class AmiiboCollectionViewController: BaseViewController {
     // MARK: - Properties -
     
     private var selectedIndexPath: IndexPath?
-    private var amiibos: [AmiiboManager.Amibo] { return AmiiboManager.shared.allAmibos }
+    private var amiibos: [AmiiboManager.Amiibo] { return AmiiboManager.shared.allAmibos }
     
     // MARK: - UI -
     
@@ -38,7 +38,7 @@ final class AmiiboCollectionViewController: BaseViewController {
 
 extension AmiiboCollectionViewController: AmiiboManagerDelegate {
     
-    func amiboManager(_ manager: AmiiboManager, didUpdateAmibos amibos: [AmiiboManager.Amibo]) {
+    func amiboManager(_ manager: AmiiboManager, didUpdateAmibos amibos: [AmiiboManager.Amiibo]) {
         
         hideProgress()
         collectionView.reloadData()
@@ -68,5 +68,30 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
         
         let width = view.bounds.width * 0.25
         return CGSize(width: width, height: width * 1.2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        selectedIndexPath = indexPath
+        performSegue(withIdentifier: "showDetails", sender: nil)
+    }
+}
+
+// MARK: - Popover -
+
+extension AmiiboCollectionViewController: AmiiboDetailsViewControllerDelegate {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let amiiboDetailsVC = segue.destination as? AmiiboDetailsViewController, let selectedIndexPath = selectedIndexPath else { return }
+        amiiboDetailsVC.configure(for: amiibos[selectedIndexPath.row], delegate: self)
+    }
+    
+    func amiiboDetailsViewControllerDidExit(_ viewController: AmiiboDetailsViewController) {
+        
+        if let selectedIndexPath = selectedIndexPath {
+            collectionView.deselectItem(at: selectedIndexPath, animated: true)
+            self.selectedIndexPath = nil
+        }
     }
 }

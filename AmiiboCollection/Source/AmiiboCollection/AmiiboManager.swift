@@ -11,7 +11,7 @@ import Foundation
 
 protocol AmiiboManagerDelegate: class {
     
-    func amiboManager(_ manager: AmiiboManager, didUpdateAmibos amibos: [AmiiboManager.Amibo])
+    func amiboManager(_ manager: AmiiboManager, didUpdateAmibos amibos: [AmiiboManager.Amiibo])
     func amiboManager(_ manager: AmiiboManager, didEncounterError error: Error)
 }
 
@@ -27,7 +27,7 @@ final class AmiiboManager {
     static let shared = AmiiboManager()
     private init() {}
     
-    private(set) var allAmibos: [Amibo] = []
+    private(set) var allAmibos: [Amiibo] = []
     var delegate: AmiiboManagerDelegate?
 }
 
@@ -42,7 +42,7 @@ extension AmiiboManager: APIServiceDelegate {
         APIService.shared.getAmibos(delegate: self)
     }
     
-    func apiService(_ manager: APIService, didReceiveAmibos amibos: [AmiiboManager.Amibo]) {
+    func apiService(_ manager: APIService, didReceiveAmibos amibos: [AmiiboManager.Amiibo]) {
         
         allAmibos = amibos
         delegate?.amiboManager(self, didUpdateAmibos: amibos)
@@ -58,13 +58,13 @@ extension AmiiboManager: APIServiceDelegate {
 extension AmiiboManager {
     
     struct AmiboBank: Decodable {
-        let amiibo: [Amibo]
+        let amiibo: [Amiibo]
     }
     
     ///
     /// Represents a single Amiibo.
     ///
-    struct Amibo: Decodable {
+    struct Amiibo: Decodable {
         
         let amiiboSeries: String
         let character: String
@@ -77,5 +77,16 @@ extension AmiiboManager {
         let type: String
         
         var imageSource: URL { return URL(string: image)! }
+        
+        var northAmericaRelease: String {
+                    
+            let decoder = DateFormatter()
+            decoder.dateFormat = "yyyy-MM-dd"
+            guard let releaseString = release["na"] as? String, let date = decoder.date(from: releaseString) else { return "N/A" }
+            
+            let encoder = DateFormatter()
+            encoder.dateFormat = "MM/dd/yy"
+            return encoder.string(from: date)
+        }
     }
 }
