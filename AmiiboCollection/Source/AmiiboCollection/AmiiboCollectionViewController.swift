@@ -14,12 +14,13 @@ final class AmiiboCollectionViewController: BaseViewController {
 
     // MARK: - Properties -
     
+    private var cellSize: CGSize!
     private var selectedIndexPath: IndexPath?
     private var amiibos: [AmiiboManager.Amiibo] { return AmiiboManager.shared.allAmibos }
     
     // MARK: - UI -
     
-    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var titleImageView: UIImageView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Setup -
@@ -31,6 +32,27 @@ final class AmiiboCollectionViewController: BaseViewController {
         showProgress()
         AmiiboManager.shared.delegate = self
         AmiiboManager.shared.updateAmibos()
+        
+        cellSize = calculateCellSize(viewSize: view.bounds.size)
+    }
+    
+    override func lightStyle() {
+        
+        super.lightStyle()
+        titleImageView.image = UIImage(named: "amiibo-light")
+    }
+    
+    override func darkStyle() {
+        
+        super.darkStyle()
+        titleImageView.image = UIImage(named: "amiibo-dark")
+    }
+    
+    private func calculateCellSize(viewSize: CGSize) -> CGSize {
+        
+        let cellsPerRow = viewSize.width > viewSize.height ? 5 : 3
+        let cellWidth = (viewSize.width * 0.75) / CGFloat(cellsPerRow)
+        return CGSize(width: cellWidth, height: cellWidth * 1.2)
     }
 }
 
@@ -53,6 +75,12 @@ extension AmiiboCollectionViewController: AmiiboManagerDelegate {
 
 extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        cellSize = calculateCellSize(viewSize: size)
+        collectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         amiibos.count
     }
@@ -65,9 +93,7 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = view.bounds.width * 0.25
-        return CGSize(width: width, height: width * 1.2)
+        return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

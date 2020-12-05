@@ -34,9 +34,10 @@ final class AmiiboCell: BaseCollectionCell {
         
         super.style()
         
+        roundCorners()
+        
         let selectionView = UIView()
-        selectionView.backgroundColor = UIColor.black
-        selectionView.alpha = 0.5
+        selectionView.backgroundColor = .nintendoFadedGray
         selectedBackgroundView = selectionView
     }
     

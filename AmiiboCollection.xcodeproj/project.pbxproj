@@ -28,6 +28,9 @@
 		13B06EFA25798D6300A76BAB /* AmiiboDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06EF925798D6300A76BAB /* AmiiboDetailsViewController.swift */; };
 		13B06EFF2579977300A76BAB /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06EFE2579977300A76BAB /* CheckmarkView.swift */; };
 		13B06F03257A74D600A76BAB /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */; };
+		13B06F0A257B022200A76BAB /* bauhaus-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F08257B01CF00A76BAB /* bauhaus-bold.ttf */; };
+		13B06F0B257B022200A76BAB /* pretendo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F09257B01CF00A76BAB /* pretendo.ttf */; };
+		13B06F0E257B061B00A76BAB /* bauhaus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F0D257B061300A76BAB /* bauhaus.ttf */; };
 		13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */; };
 		13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB3255BB61600611FBF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +59,9 @@
 		13B06EF925798D6300A76BAB /* AmiiboDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmiiboDetailsViewController.swift; sourceTree = "<group>"; };
 		13B06EFE2579977300A76BAB /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		13B06F08257B01CF00A76BAB /* bauhaus-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bauhaus-bold.ttf"; sourceTree = "<group>"; };
+		13B06F09257B01CF00A76BAB /* pretendo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pretendo.ttf; sourceTree = "<group>"; };
+		13B06F0D257B061300A76BAB /* bauhaus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bauhaus.ttf; sourceTree = "<group>"; };
 		13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		13F22CB3255BB61600611FBF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +135,9 @@
 		139ED3B0255B7F1D00F9BB7A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				13B06F0D257B061300A76BAB /* bauhaus.ttf */,
+				13B06F08257B01CF00A76BAB /* bauhaus-bold.ttf */,
+				13B06F09257B01CF00A76BAB /* pretendo.ttf */,
 				139ED38F255B67C200F9BB7A /* Main.storyboard */,
 				139ED394255B67C500F9BB7A /* LaunchScreen.storyboard */,
 				139ED392255B67C500F9BB7A /* Assets.xcassets */,
@@ -247,6 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B06F0E257B061B00A76BAB /* bauhaus.ttf in Resources */,
+				13B06F0A257B022200A76BAB /* bauhaus-bold.ttf in Resources */,
+				13B06F0B257B022200A76BAB /* pretendo.ttf in Resources */,
 				139ED396255B67C500F9BB7A /* LaunchScreen.storyboard in Resources */,
 				139ED393255B67C500F9BB7A /* Assets.xcassets in Resources */,
 				139ED391255B67C200F9BB7A /* Main.storyboard in Resources */,
@@ -429,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				INFOPLIST_FILE = AmiiboCollection/Assets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K9C8XCSNZZ;
 				INFOPLIST_FILE = AmiiboCollection/Assets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

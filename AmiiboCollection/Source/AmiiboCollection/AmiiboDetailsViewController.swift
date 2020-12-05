@@ -104,7 +104,7 @@ extension AmiiboDetailsViewController {
     
     @IBAction private func actionButtonPressed(_ sender: UIButton) {
         
-        checkmarkView.show(color: .nintendoGreen, backgroundColor: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.6), animated: true)
+        checkmarkView.show(color: .nintendoGreen, backgroundColor: .nintendoFadedGray, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
             
