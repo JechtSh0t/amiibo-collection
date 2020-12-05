@@ -20,7 +20,7 @@ final class AmiiboDetailsViewController: BaseViewController {
     
     // MARK: - Properties -
     
-    private var amiibo: AmiiboManager.Amiibo!
+    private var amiibo: Amiibo!
     private weak var delegate: AmiiboDetailsViewControllerDelegate?
     
     // MARK: - UI -
@@ -35,7 +35,7 @@ final class AmiiboDetailsViewController: BaseViewController {
     
     // MARK: - Setup -
     
-    func configure(for amiibo: AmiiboManager.Amiibo, delegate: AmiiboDetailsViewControllerDelegate?) {
+    func configure(for amiibo: Amiibo, delegate: AmiiboDetailsViewControllerDelegate?) {
         
         self.amiibo = amiibo
         self.delegate = delegate

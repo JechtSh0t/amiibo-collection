@@ -14,7 +14,7 @@ final class AmiiboCell: BaseCollectionCell {
     
     // MARK: - Properties -
     
-    private var amiibo: AmiiboManager.Amiibo!
+    private var amiibo: Amiibo!
     
     // MARK: - UI -
     
@@ -41,7 +41,7 @@ final class AmiiboCell: BaseCollectionCell {
         selectedBackgroundView = selectionView
     }
     
-    func configure(for amiibo: AmiiboManager.Amiibo) {
+    func configure(for amiibo: Amiibo) {
         
         self.amiibo = amiibo
         nameLabel.text = amiibo.name

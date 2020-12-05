@@ -16,7 +16,7 @@ final class AmiiboCollectionViewController: BaseViewController {
     
     private var cellSize: CGSize!
     private var selectedIndexPath: IndexPath?
-    private var amiibos: [AmiiboManager.Amiibo] { return AmiiboManager.shared.allAmibos }
+    private var amiibos: [Amiibo] { return AmiiboManager.shared.allAmiibos }
     
     // MARK: - UI -
     
@@ -25,13 +25,13 @@ final class AmiiboCollectionViewController: BaseViewController {
     
     // MARK: - Setup -
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        super.viewDidLoad()
+        super.viewDidAppear(animated)
         
         showProgress()
         AmiiboManager.shared.delegate = self
-        AmiiboManager.shared.updateAmibos()
+        AmiiboManager.shared.getAmiibos()
         
         cellSize = calculateCellSize(viewSize: view.bounds.size)
     }
@@ -60,13 +60,13 @@ final class AmiiboCollectionViewController: BaseViewController {
 
 extension AmiiboCollectionViewController: AmiiboManagerDelegate {
     
-    func amiboManager(_ manager: AmiiboManager, didUpdateAmibos amibos: [AmiiboManager.Amiibo]) {
+    func amiiboManager(_ manager: AmiiboManager, didUpdateAmiibos amiibos: [Amiibo]) {
         
         hideProgress()
         collectionView.reloadData()
     }
     
-    func amiboManager(_ manager: AmiiboManager, didEncounterError error: Error) {
+    func amiiboManager(_ manager: AmiiboManager, didEncounterError error: Error) {
         showAlert(for: error)
     }
 }

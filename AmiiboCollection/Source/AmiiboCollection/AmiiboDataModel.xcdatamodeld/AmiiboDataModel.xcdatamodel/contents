@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Amiibo" representedClassName=".Amiibo" syncable="YES">
+        <attribute name="amiiboSeries" attributeType="String"/>
+        <attribute name="character" attributeType="String"/>
+        <attribute name="gameSeries" attributeType="String"/>
+        <attribute name="head" attributeType="String"/>
+        <attribute name="imagePath" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="releaseDates" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName"/>
+        <attribute name="tail" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Amiibo" positionX="-63" positionY="-18" width="128" height="164"/>
+    </elements>
+</model>
