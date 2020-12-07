@@ -33,11 +33,13 @@ final class AmiiboManager {
     // MARK: - Properties -
     
     var managedObjectContext: NSManagedObjectContext!
-    private(set) var allAmiibos: [Amiibo] = []
+    private(set) var allAmiibos: [Amiibo] = [] { didSet { filterAmiibos(by: currentFilter) } }
+    private var currentFilter: FilterType = .all
+    private(set) var filteredAmiibos: [Amiibo] = []
     weak var delegate: AmiiboManagerDelegate?
 }
 
-// MARK: - Public Interface -
+// MARK: - Fetching Amiibos -
 
 extension AmiiboManager {
     
@@ -139,6 +141,26 @@ extension AmiiboManager {
         guard !amiibos.isEmpty else { throw BSGError(type: .data) }
         
         return amiibos
+    }
+}
+
+// MARK: - Filters -
+
+extension AmiiboManager {
+    
+    enum FilterType: Int {
+        case all
+        case collection
+    }
+    
+    func filterAmiibos(by filterType: FilterType) {
+        
+        currentFilter = filterType
+        
+        switch filterType {
+        case .all: filteredAmiibos = allAmiibos
+        case .collection: filteredAmiibos = allAmiibos.filter { $0.purchase != nil }
+        }
     }
 }
 

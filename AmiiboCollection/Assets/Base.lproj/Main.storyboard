@@ -29,14 +29,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mo8-2m-SQm">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mo8-2m-SQm">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btc-L5-xRA" userLabel="titleView">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="205"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="90"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amiibo-light" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-fV-T2E">
-                                                <rect key="frame" x="336" y="41" width="352" height="123"/>
+                                                <rect key="frame" x="383.5" y="0.0" width="257" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="iZL-fV-T2E" secondAttribute="height" multiplier="2.86:1" id="nzi-WE-wwD"/>
                                                 </constraints>
@@ -44,13 +44,39 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="iZL-fV-T2E" firstAttribute="height" secondItem="btc-L5-xRA" secondAttribute="height" multiplier="0.6" id="4EE-SY-Dtu"/>
+                                            <constraint firstItem="iZL-fV-T2E" firstAttribute="height" secondItem="btc-L5-xRA" secondAttribute="height" id="4EE-SY-Dtu"/>
+                                            <constraint firstAttribute="height" constant="60" id="8KJ-90-55l">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                            </constraint>
                                             <constraint firstItem="iZL-fV-T2E" firstAttribute="centerY" secondItem="btc-L5-xRA" secondAttribute="centerY" id="M2z-Zz-A8Y"/>
                                             <constraint firstItem="iZL-fV-T2E" firstAttribute="centerX" secondItem="btc-L5-xRA" secondAttribute="centerX" id="wpX-c8-GaG"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csS-ya-zjL" userLabel="selectionView">
+                                        <rect key="frame" x="0.0" y="110" width="1024" height="90"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UDf-qJ-lCz">
+                                                <rect key="frame" x="430.5" y="29.5" width="163" height="32"/>
+                                                <segments>
+                                                    <segment title="All"/>
+                                                    <segment title="Collection"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="filterChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Rfy-P1-H2O"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="AcW-br-AgR">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                            </constraint>
+                                            <constraint firstItem="UDf-qJ-lCz" firstAttribute="centerY" secondItem="csS-ya-zjL" secondAttribute="centerY" id="F6Y-dW-P2W"/>
+                                            <constraint firstItem="UDf-qJ-lCz" firstAttribute="centerX" secondItem="csS-ya-zjL" secondAttribute="centerX" id="giP-Io-8lc"/>
+                                        </constraints>
+                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kv9-Xp-VK1" userLabel="collectionView">
-                                        <rect key="frame" x="51" y="205" width="922" height="1161"/>
+                                        <rect key="frame" x="25.5" y="220" width="973" height="1146"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vUX-4m-WI1">
                                             <size key="itemSize" width="128" height="128"/>
@@ -76,7 +102,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Sl-XGp" userLabel="nameLabel">
-                                                                    <rect key="frame" x="15.5" y="77" width="97.5" height="51"/>
+                                                                    <rect key="frame" x="18.5" y="77" width="91" height="51"/>
                                                                     <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -122,10 +148,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="btc-L5-xRA" firstAttribute="height" secondItem="mo8-2m-SQm" secondAttribute="height" multiplier="0.15" id="7WC-nD-mkm"/>
+                                    <constraint firstItem="csS-ya-zjL" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" id="ZaV-Ds-rRe"/>
                                     <constraint firstItem="btc-L5-xRA" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" id="eaH-U2-yVA"/>
-                                    <constraint firstItem="kv9-Xp-VK1" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" multiplier="0.9" id="f3z-cZ-Mq0"/>
+                                    <constraint firstItem="kv9-Xp-VK1" firstAttribute="width" secondItem="mo8-2m-SQm" secondAttribute="width" multiplier="0.95" id="f3z-cZ-Mq0"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -139,6 +166,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="kv9-Xp-VK1" id="HIP-gy-IK3"/>
+                        <outlet property="filterSegmentedControl" destination="UDf-qJ-lCz" id="GXM-op-pY5"/>
                         <outlet property="titleImageView" destination="iZL-fV-T2E" id="VyB-Fs-8He"/>
                         <segue destination="ZfH-TL-zR5" kind="presentation" identifier="showDetails" id="4iT-G7-KNN"/>
                     </connections>
@@ -152,7 +180,7 @@
             <objects>
                 <viewController storyboardIdentifier="amiiboPopoverViewController" id="ZfH-TL-zR5" customClass="AmiiboDetailsViewController" customModule="AmiiboCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rwd-t9-WGC">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-nL-ZMx" userLabel="popoverView">
@@ -178,7 +206,7 @@
                                                 <rect key="frame" x="73.5" y="176.5" width="177" height="144"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-3w-ibq" userLabel="nameLabel">
-                                                        <rect key="frame" x="-73.5" y="0.0" width="250.5" height="30.5"/>
+                                                        <rect key="frame" x="-73.5" y="0.0" width="250.5" height="31.5"/>
                                                         <fontDescription key="fontDescription" name="BauhausITCbyBT-Bold" family="Bauhaus Md BT" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -187,7 +215,7 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Smash Bros" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0i-p2-iLt" userLabel="gameSeriesLabel">
-                                                        <rect key="frame" x="-73.5" y="34.5" width="250.5" height="23.5"/>
+                                                        <rect key="frame" x="-73.5" y="35.5" width="250.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -196,7 +224,7 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: 11/01/1991" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOY-Tv-QFD" userLabel="releaseDateLabel">
-                                                        <rect key="frame" x="-73.5" y="70" width="250.5" height="19"/>
+                                                        <rect key="frame" x="-73.5" y="67" width="250.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -221,7 +249,7 @@
                                                 <rect key="frame" x="0.0" y="330.5" width="324" height="58"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9H-u2-cry" userLabel="selectionButton">
-                                                        <rect key="frame" x="84" y="0.0" width="156" height="58"/>
+                                                        <rect key="frame" x="67" y="0.0" width="190" height="58"/>
                                                         <fontDescription key="fontDescription" name="Pretendo" family="Pretendo" pointSize="16"/>
                                                         <state key="normal" title="Add to Collection">
                                                             <color key="titleColor" systemColor="systemGreenColor"/>

@@ -16,11 +16,16 @@ final class AmiiboCollectionViewController: BaseViewController {
     
     private var cellSize: CGSize!
     private var selectedIndexPath: IndexPath?
-    private var amiibos: [Amiibo] { return AmiiboManager.shared.allAmiibos }
+    private var amiibos: [Amiibo] { return AmiiboManager.shared.filteredAmiibos }
+    private var selectedFilterType: AmiiboManager.FilterType {
+        guard let filterType = AmiiboManager.FilterType(rawValue: filterSegmentedControl.selectedSegmentIndex) else { return .all}
+        return filterType
+    }
     
     // MARK: - UI -
     
     @IBOutlet private weak var titleImageView: UIImageView!
+    @IBOutlet private weak var filterSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     /// Allows pull to refresh on the table.
@@ -50,12 +55,22 @@ final class AmiiboCollectionViewController: BaseViewController {
         
         super.lightStyle()
         titleImageView.image = UIImage(named: "amiibo-light")
+        
+        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
+        filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        filterSegmentedControl.selectedSegmentTintColor = .nintendoFadedGray
+        filterSegmentedControl.backgroundColor = .systemBackground
     }
     
     override func darkStyle() {
         
         super.darkStyle()
         titleImageView.image = UIImage(named: "amiibo-dark")
+        
+        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
+        filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        filterSegmentedControl.selectedSegmentTintColor = .nintendoFadedGray
+        filterSegmentedControl.backgroundColor = .systemBackground
     }
     
     private func calculateCellSize(viewSize: CGSize) -> CGSize {
@@ -81,6 +96,17 @@ extension AmiiboCollectionViewController: AmiiboManagerDelegate {
         
         refreshControl.endRefreshing()
         showAlert(for: error)
+    }
+}
+
+// MARK: - Filter -
+
+extension AmiiboCollectionViewController {
+    
+    @IBAction private func filterChanged(_ sender: UISegmentedControl) {
+        
+        AmiiboManager.shared.filterAmiibos(by: selectedFilterType)
+        collectionView.reloadData()
     }
 }
 
@@ -135,9 +161,9 @@ extension AmiiboCollectionViewController: AmiiboDetailsViewControllerDelegate {
     
     func amiiboDetailsViewControllerWillDismiss(_ viewController: AmiiboDetailsViewController) {
         
-        if let selectedIndexPath = selectedIndexPath {
-            collectionView.reloadItems(at: [selectedIndexPath])
-            self.selectedIndexPath = nil
-        }
+        self.selectedIndexPath = nil
+        
+        AmiiboManager.shared.filterAmiibos(by: selectedFilterType)
+        collectionView.reloadData()
     }
 }
