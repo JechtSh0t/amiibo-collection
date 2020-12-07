@@ -127,8 +127,13 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
+        super.viewWillTransition(to: size, with: coordinator)
         cellSize = calculateCellSize(viewSize: size)
-        collectionView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     ///

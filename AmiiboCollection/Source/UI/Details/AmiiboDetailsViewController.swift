@@ -73,6 +73,8 @@ final class AmiiboDetailsViewController: PopoverViewController {
         releaseDateLabel.text = "Released: \(amiibo.northAmericaRelease)"
         
         actionButton.setTitle(!isPurchased ? "Add to Collection" : "Remove", for: .normal)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(imageLoaded), name: Notification.Name(rawValue: "imageLoaded"), object: nil)
     }
     
     override func style() {
