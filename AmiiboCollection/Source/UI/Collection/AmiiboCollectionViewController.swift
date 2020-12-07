@@ -23,6 +23,15 @@ final class AmiiboCollectionViewController: BaseViewController {
     @IBOutlet private weak var titleImageView: UIImageView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    /// Allows pull to refresh on the table.
+    private lazy var refreshControl: UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = traitCollection.userInterfaceStyle == .light ? .black : .white
+        refreshControl.addTarget(self, action: #selector(refreshActivated(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
     // MARK: - Setup -
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +39,7 @@ final class AmiiboCollectionViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         showProgress()
+        collectionView.refreshControl = refreshControl
         AmiiboManager.shared.delegate = self
         AmiiboManager.shared.getAmiibos()
         
@@ -63,10 +73,13 @@ extension AmiiboCollectionViewController: AmiiboManagerDelegate {
     func amiiboManager(_ manager: AmiiboManager, didUpdateAmiibos amiibos: [Amiibo]) {
         
         hideProgress()
+        refreshControl.endRefreshing()
         collectionView.reloadData()
     }
     
     func amiiboManager(_ manager: AmiiboManager, didEncounterError error: Error) {
+        
+        refreshControl.endRefreshing()
         showAlert(for: error)
     }
 }
@@ -79,6 +92,13 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
         
         cellSize = calculateCellSize(viewSize: size)
         collectionView.reloadData()
+    }
+    
+    ///
+    /// Called when refresh is activated by a pull.
+    ///
+    @IBAction @objc func refreshActivated(_ sender: UIRefreshControl) {
+        AmiiboManager.shared.refreshAmiibos()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

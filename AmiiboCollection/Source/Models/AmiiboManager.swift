@@ -33,7 +33,7 @@ final class AmiiboManager {
     // MARK: - Properties -
     
     var managedObjectContext: NSManagedObjectContext!
-    private(set) var allAmiibos: [Amiibo] = [] { didSet { allAmiibos.forEach { $0.purchase = try? getPurchase(of: $0) }} }
+    private(set) var allAmiibos: [Amiibo] = []
     weak var delegate: AmiiboManagerDelegate?
 }
 
@@ -48,8 +48,9 @@ extension AmiiboManager {
         
         do {
             allAmiibos = try getAmiibosFromLocalStorage()
-            DispatchQueue.main.async { self.delegate?.amiiboManager(self, didUpdateAmiibos: self.allAmiibos) }
+            delegate?.amiiboManager(self, didUpdateAmiibos: self.allAmiibos)
         } catch {
+            debugPrint("Failed to load from local storage")
             getAmiibosFromServer()
         }
     }
@@ -58,7 +59,17 @@ extension AmiiboManager {
     /// Updates Amiibos with an API call to the server.
     ///
     func refreshAmiibos() {
-        getAmiibosFromServer()
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Amiibo")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.execute(batchDeleteRequest)
+            debugPrint("Local storage cleared")
+            getAmiibosFromServer()
+        } catch {
+            delegate?.amiiboManager(self, didEncounterError: error)
+        }
     }
 }
 
@@ -82,13 +93,20 @@ extension AmiiboManager: APIServiceDelegate {
     func apiService(_ manager: APIService, didReceiveData data: Data, request: URLRequest) {
         
         do {
+            
             let amiiboBank = try JSONDecoder().decode(CodableAmiiboBank.self, from: data)
-            allAmiibos = amiiboBank.amiibo.map { Amiibo($0, context: self.managedObjectContext) }
+            debugPrint("Received \(amiiboBank.amiibo.count) Amiibos from server")
+            allAmiibos = amiiboBank.amiibo.map {
+                let amiibo = Amiibo($0, context: self.managedObjectContext)
+                amiibo.purchase = try? getPurchase(of: amiibo)
+                return amiibo
+            }
+            
             try managedObjectContext.save()
-            DispatchQueue.main.async { self.delegate?.amiiboManager(self, didUpdateAmiibos: self.allAmiibos) }
+            delegate?.amiiboManager(self, didUpdateAmiibos: self.allAmiibos)
             
         } catch {
-            DispatchQueue.main.async { self.delegate?.amiiboManager(self, didEncounterError: error) }
+            delegate?.amiiboManager(self, didEncounterError: error)
         }
     }
     
@@ -96,7 +114,7 @@ extension AmiiboManager: APIServiceDelegate {
     /// Called when *APIService* encounters any error.
     ///
     func apiService(_ manager: APIService, didEncounterError error: Error, request: URLRequest) {
-        DispatchQueue.main.async { self.delegate?.amiiboManager(self, didEncounterError: error) }
+        delegate?.amiiboManager(self, didEncounterError: error)
     }
 }
 
@@ -117,6 +135,7 @@ extension AmiiboManager {
         fetchRequest.sortDescriptors = [sort1, sort2]
         
         let amiibos = try managedObjectContext.fetch(fetchRequest)
+        amiibos.forEach { $0.purchase = try? getPurchase(of: $0) }
         guard !amiibos.isEmpty else { throw BSGError(type: .data) }
         
         return amiibos

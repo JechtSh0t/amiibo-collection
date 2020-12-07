@@ -53,10 +53,10 @@ extension APIService {
             do {
                 if let error = error { throw error }
                 guard let data = data else { throw BSGError(type: .data) }
-                delegate.apiService(self, didReceiveData: data, request: request)
+                DispatchQueue.main.async { delegate.apiService(self, didReceiveData: data, request: request) }
                 
             } catch {
-                delegate.apiService(self, didEncounterError: error, request: request)
+                DispatchQueue.main.async { delegate.apiService(self, didEncounterError: error, request: request) }
             }
         })
 
