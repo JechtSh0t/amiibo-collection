@@ -13,13 +13,12 @@ extension UIImageView {
     ///
     /// Shows an activity indicator while an image is loading.
     ///
-    /// - parameter style: The size of the indicator to show.
     /// - returns: The activity indicator in progress.
     ///
-    func showActivityIndicator(style: UIActivityIndicatorView.Style) -> UIActivityIndicatorView {
+    func showActivityIndicator() -> UIActivityIndicatorView {
         
         image = nil
-        let activityIndicator = UIActivityIndicatorView(style: style)
+        let activityIndicator = UIActivityIndicatorView(style: .white)
         activityIndicator.color = traitCollection.userInterfaceStyle == .light ? .black : .white
         addSubview(activityIndicator)
         

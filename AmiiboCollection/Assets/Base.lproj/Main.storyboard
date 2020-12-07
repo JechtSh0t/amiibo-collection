@@ -124,7 +124,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iQ-s4-gPg" userLabel="purchaseIndicatorView" customClass="IndicatorView" customModule="AmiiboCollection" customModuleProvider="target">
-                                                            <rect key="frame" x="95.333333333333329" y="2.0000000000000018" width="30.666666666666671" height="30.666666666666671"/>
+                                                            <rect key="frame" x="103" y="2" width="23" height="23"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="6iQ-s4-gPg" secondAttribute="height" multiplier="1:1" id="BEB-hh-foy"/>
@@ -134,7 +134,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Wq8-X7-Hes" secondAttribute="bottom" id="96T-RJ-a2h"/>
                                                         <constraint firstItem="6iQ-s4-gPg" firstAttribute="top" secondItem="kU9-hm-lq2" secondAttribute="top" constant="2" id="L9Q-cq-B2R"/>
-                                                        <constraint firstItem="6iQ-s4-gPg" firstAttribute="width" secondItem="dvi-3k-r5b" secondAttribute="width" multiplier="0.4" id="SIM-4O-blz"/>
+                                                        <constraint firstItem="6iQ-s4-gPg" firstAttribute="width" secondItem="dvi-3k-r5b" secondAttribute="width" multiplier="0.3" id="SIM-4O-blz"/>
                                                         <constraint firstItem="Wq8-X7-Hes" firstAttribute="top" secondItem="kU9-hm-lq2" secondAttribute="top" id="Yk9-dY-4L1"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wq8-X7-Hes" secondAttribute="trailing" id="i2u-Yb-kmy"/>
                                                         <constraint firstAttribute="trailing" secondItem="6iQ-s4-gPg" secondAttribute="trailing" constant="2" id="pKH-Wp-IMY"/>
@@ -403,7 +403,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-mf-zZA" userLabel="purchaseIndicatorView" customClass="IndicatorView" customModule="AmiiboCollection" customModuleProvider="target">
-                                        <rect key="frame" x="214.33333333333331" y="13" width="32.666666666666657" height="32.666666666666664"/>
+                                        <rect key="frame" x="222.33333333333331" y="13.000000000000002" width="24.666666666666657" height="24.666666666666671"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4fA-mf-zZA" secondAttribute="height" multiplier="1:1" id="fyH-m5-gvl"/>
@@ -415,7 +415,7 @@
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="height" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="0.9" id="2dX-V9-keI"/>
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="centerY" secondItem="OGI-nL-ZMx" secondAttribute="centerY" id="AGJ-ON-7ZJ"/>
                                     <constraint firstAttribute="width" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="1:1" id="LZV-Qb-1cS"/>
-                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="width" multiplier="0.4" id="Ov9-Py-Vh1"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="width" multiplier="0.3" id="Ov9-Py-Vh1"/>
                                     <constraint firstItem="4fA-mf-zZA" firstAttribute="trailing" secondItem="7MC-UW-YQD" secondAttribute="trailing" id="SJj-Yv-OsJ"/>
                                     <constraint firstAttribute="width" constant="260" id="iLB-nx-jXy">
                                         <variation key="heightClass=regular-widthClass=regular" constant="360"/>

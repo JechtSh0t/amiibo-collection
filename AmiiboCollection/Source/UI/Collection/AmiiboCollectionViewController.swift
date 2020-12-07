@@ -52,28 +52,36 @@ final class AmiiboCollectionViewController: BaseViewController {
         cellSize = calculateCellSize(viewSize: view.bounds.size)
     }
     
+    override func style() {
+        
+        super.style()
+        
+        createButton.tintColor = .nintendoGreen
+        
+        if #available(iOS 13.0, *) {
+            filterSegmentedControl.selectedSegmentTintColor = .nintendoGreen
+            filterSegmentedControl.backgroundColor = .systemBackground
+        } else {
+            filterSegmentedControl.tintColor = .nintendoGreen
+        }
+    }
+    
     override func lightStyle() {
         
         super.lightStyle()
         titleImageView.image = UIImage(named: "amiibo-light")
-        createButton.tintColor = .black
         
         let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        filterSegmentedControl.selectedSegmentTintColor = .nintendoFadedGray
-        filterSegmentedControl.backgroundColor = .systemBackground
     }
     
     override func darkStyle() {
         
         super.darkStyle()
         titleImageView.image = UIImage(named: "amiibo-dark")
-        createButton.tintColor = .white
         
         let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-        filterSegmentedControl.selectedSegmentTintColor = .nintendoFadedGray
-        filterSegmentedControl.backgroundColor = .systemBackground
     }
     
     private func calculateCellSize(viewSize: CGSize) -> CGSize {

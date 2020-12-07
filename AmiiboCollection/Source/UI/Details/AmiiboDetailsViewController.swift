@@ -53,14 +53,17 @@ final class AmiiboDetailsViewController: PopoverViewController {
             if let cachedImage = ImageManager.shared.loadImage(imageSource) {
                 imageView.image = cachedImage
             } else {
-                activityIndicator = imageView.showActivityIndicator(style: .medium)
+                activityIndicator = imageView.showActivityIndicator()
             }
         } else {
             let defaultImageName = traitCollection.userInterfaceStyle == .light ? "amiibo-logo-light" : "amiibo-logo-dark"
             imageView.image = UIImage(named: defaultImageName)
         }
         
-        if isPurchased { purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false) }
+        if isPurchased {
+            let checkmark = traitCollection.userInterfaceStyle == .light ? UIImage(named: "checkmark-light")! : UIImage(named: "checkmark-dark")!
+            purchaseIndicatorView.show(checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false)
+        }
         nameLabel.text = amiibo.name
         gameSeriesLabel.text = amiibo.gameSeries
         releaseDateLabel.text = "Released: \(amiibo.northAmericaRelease)"
@@ -118,6 +121,13 @@ extension AmiiboDetailsViewController {
 
 extension AmiiboDetailsViewController {
     
+    private func setActionButton(enabled: Bool) {
+        
+        actionButton.isEnabled = enabled
+        actionButton.setTitleColor(enabled ? .nintendoGreen : .nintendoFadedGray, for: .normal)
+        actionButton.addBorder(width: 3.0, color: enabled ? .nintendoGreen : .nintendoFadedGray)
+    }
+    
     @IBAction private func actionButtonPressed(_ sender: UIButton) {
         isPurchased ? returnAmiibo() : purchaseAmiibo()
     }
@@ -129,9 +139,12 @@ extension AmiiboDetailsViewController {
         
         do {
             try AmiiboManager.shared.addToCollection(amiibo)
-            purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: true)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
+            let checkmark = traitCollection.userInterfaceStyle == .light ? UIImage(named: "checkmark-light")! : UIImage(named: "checkmark-dark")!
+            setActionButton(enabled: false)
+            purchaseIndicatorView.show(checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                 self.dismiss(animated: true, completion: nil)
             })
         } catch {
@@ -147,10 +160,10 @@ extension AmiiboDetailsViewController {
         do {
             
             try AmiiboManager.shared.removeFromCollection(amiibo)
-            purchaseIndicatorView.hide()
-            purchaseIndicatorView.show(.xmark, color: .nintendoRed, backgroundColor: .clear, animated: true)
+            purchaseIndicatorView.hide(animated: true)
+            setActionButton(enabled: false)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                 self.dismiss(animated: true, completion: nil)
             })
         } catch {

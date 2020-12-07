@@ -54,7 +54,7 @@ final class AmiiboCell: BaseCollectionCell {
             if let cachedImage = ImageManager.shared.loadImage(imageSource) {
                 imageView.image = cachedImage
             } else {
-                activityIndicator = imageView.showActivityIndicator(style: .medium)
+                activityIndicator = imageView.showActivityIndicator()
             }
         } else {
             let defaultImageName = traitCollection.userInterfaceStyle == .light ? "amiibo-logo-light" : "amiibo-logo-dark"
@@ -62,9 +62,10 @@ final class AmiiboCell: BaseCollectionCell {
         }
         
         if amiibo.purchase != nil {
-            purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false)
+            let checkmark = traitCollection.userInterfaceStyle == .light ? UIImage(named: "checkmark-light")! : UIImage(named: "checkmark-dark")!
+            purchaseIndicatorView.show(checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false)
         } else {
-            purchaseIndicatorView.hide()
+            purchaseIndicatorView.hide(animated: false)
         }
     }
 }
