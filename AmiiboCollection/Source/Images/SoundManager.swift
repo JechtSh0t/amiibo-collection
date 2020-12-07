@@ -18,6 +18,7 @@ final class SoundManager {
     
     // MARK: - Properties -
     
+    /// Object used to play sounds.
     private var soundPlayer: AVAudioPlayer?
     
     ///

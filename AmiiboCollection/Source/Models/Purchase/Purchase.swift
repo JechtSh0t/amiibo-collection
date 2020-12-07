@@ -9,6 +9,9 @@
 import Foundation
 import CoreData
 
+///
+/// Model containing information about the purchase of an Amiibo.
+///
 public class Purchase: NSManagedObject {
 
 }

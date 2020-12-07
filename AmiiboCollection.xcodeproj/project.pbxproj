@@ -156,10 +156,9 @@
 		139ED3B0255B7F1D00F9BB7A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				13E68F07257EC106008D0F02 /* Storyboard */,
 				13E68EFC257E8536008D0F02 /* Sound */,
 				13A5B7F0257C3A040072A6EB /* Font */,
-				139ED38F255B67C200F9BB7A /* Main.storyboard */,
-				139ED394255B67C500F9BB7A /* LaunchScreen.storyboard */,
 				139ED392255B67C500F9BB7A /* Assets.xcassets */,
 				139ED397255B67C500F9BB7A /* Info.plist */,
 			);
@@ -279,6 +278,15 @@
 				13E68EFD257E8541008D0F02 /* smb-coin.wav */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		13E68F07257EC106008D0F02 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				139ED38F255B67C200F9BB7A /* Main.storyboard */,
+				139ED394255B67C500F9BB7A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		13F22CB0255BB5B600611FBF /* Base */ = {

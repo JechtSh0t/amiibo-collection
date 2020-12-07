@@ -17,24 +17,39 @@ protocol AmiiboDetailsViewControllerDelegate: class {
 
 // MARK: - Class -
 
+///
+/// Displays a detailed view of a single Amiibo. Allows user to add or remove the Amiibo from the collection.
+///
 final class AmiiboDetailsViewController: PopoverViewController {
     
     // MARK: - Properties -
     
+    /// The single Amiibo that the cell is configured to display.
     private var amiibo: Amiibo!
+    /// True, if the Amiibo is already part of the collection.
     private var isPurchased: Bool { return amiibo.purchase != nil }
+    /// Reference to *AmiiboCollectionViewController*.
     private weak var delegate: AmiiboDetailsViewControllerDelegate?
     
     // MARK: - UI -
     
+    /// Containing view for the popover.
     @IBOutlet private weak var popoverView: UIView!
+    /// Displays an image of the Amiibo.
     @IBOutlet private weak var imageView: UIImageView!
+    /// Shown while *imageView* is loading an image.
     private var activityIndicator: UIActivityIndicatorView?
+    /// Displays a checkmark is the Amiibo is part of the collection.
     @IBOutlet private weak var purchaseIndicatorView: IndicatorView!
+    /// Displays the name of the Amiibo.
     @IBOutlet private weak var nameLabel: UILabel!
+    /// Displays the series from which the Amiibo originates.
     @IBOutlet private weak var gameSeriesLabel: UILabel!
+    /// Displays the date when the Amiibo was released, or created.
     @IBOutlet private weak var releaseDateLabel: UILabel!
+    /// Displays the date when the Amiibo was added to the collection, if there is one.
     @IBOutlet private weak var purchaseDateLabel: UILabel!
+    /// Button used to add or remove the Amiibo from the collection.
     @IBOutlet private weak var actionButton: UIButton!
     
     // MARK: - Setup -
@@ -127,6 +142,11 @@ extension AmiiboDetailsViewController {
 
 extension AmiiboDetailsViewController {
     
+    ///
+    /// Enables or disabled the action button.
+    ///
+    /// - parameter enabled: If true, the action button will be enabled.
+    ///
     private func setActionButton(enabled: Bool) {
         
         actionButton.isEnabled = enabled

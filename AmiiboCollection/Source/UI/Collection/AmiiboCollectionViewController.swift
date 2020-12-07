@@ -14,9 +14,13 @@ final class AmiiboCollectionViewController: BaseViewController {
 
     // MARK: - Properties -
     
+    /// The current size of collection cells. This changes with the orientation of the UI.
     private var cellSize: CGSize!
+    /// The last cell that was selected, if a popover is active.
     private var selectedIndexPath: IndexPath?
+    /// Shortcut for accessing Amiibos.
     private var amiibos: [Amiibo] { return AmiiboManager.shared.filteredAmiibos }
+    /// The current filter type for Amiibos, based on the position of the segmented control.
     private var selectedFilterType: AmiiboManager.FilterType {
         guard let filterType = AmiiboManager.FilterType(rawValue: filterSegmentedControl.selectedSegmentIndex) else { return .all}
         return filterType
@@ -24,9 +28,13 @@ final class AmiiboCollectionViewController: BaseViewController {
     
     // MARK: - UI -
     
+    /// Displays the title of the application.
     @IBOutlet private weak var titleImageView: UIImageView!
+    /// Used to create a new Amiibo.
     @IBOutlet private weak var createButton: UIButton!
+    /// Used to switch the Amiibo filter.
     @IBOutlet private weak var filterSegmentedControl: UISegmentedControl!
+    /// Collection of Amiibo cells.
     @IBOutlet private weak var collectionView: UICollectionView!
     
     /// Allows pull to refresh on the table.
@@ -83,13 +91,6 @@ final class AmiiboCollectionViewController: BaseViewController {
         let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 22.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
     }
-    
-    private func calculateCellSize(viewSize: CGSize) -> CGSize {
-        
-        let cellsPerRow = viewSize.width > viewSize.height ? 5 : 3
-        let cellWidth = (viewSize.width * 0.80) / CGFloat(cellsPerRow)
-        return CGSize(width: cellWidth, height: cellWidth * 1.2)
-    }
 }
 
 // MARK: - Amiibos -
@@ -131,7 +132,20 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
         cellSize = calculateCellSize(viewSize: size)
     }
     
+    ///
+    /// Determines the proper size of cells based on UI orientation.
+    ///
+    /// - parameter size: The current frame size of the view.
+    ///
+    private func calculateCellSize(viewSize: CGSize) -> CGSize {
+        
+        let cellsPerRow = viewSize.width > viewSize.height ? 5 : 3
+        let cellWidth = (viewSize.width * 0.80) / CGFloat(cellsPerRow)
+        return CGSize(width: cellWidth, height: cellWidth * 1.2)
+    }
+    
     override func viewDidLayoutSubviews() {
+        
         super.viewDidLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
     }

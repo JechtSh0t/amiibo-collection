@@ -14,13 +14,18 @@ final class AmiiboCell: BaseCollectionCell {
     
     // MARK: - Properties -
     
+    /// The single Amiibo that the cell is configured to display.
     private var amiibo: Amiibo!
     
     // MARK: - UI -
     
+    /// Displays an image of the Amiibo.
     @IBOutlet private weak var imageView: UIImageView!
+    /// Shown while *imageView* is loading an image.
     private var activityIndicator: UIActivityIndicatorView?
+    /// Displays a checkmark for a purchsed Amiibo.
     @IBOutlet private weak var purchaseIndicatorView: IndicatorView!
+    /// Displays the name of the Amiibo.
     @IBOutlet private weak var nameLabel: UILabel!
     
     // MARK: - Setup -

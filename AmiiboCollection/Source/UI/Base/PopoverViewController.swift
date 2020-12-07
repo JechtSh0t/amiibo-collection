@@ -7,7 +7,12 @@
 
 import UIKit
 
+///
+/// Common base class for popover views.
+///
 class PopoverViewController: BaseViewController {
+    
+    // MARK: - Setup -
     
     required init?(coder: NSCoder) {
         

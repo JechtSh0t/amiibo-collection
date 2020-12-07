@@ -8,6 +8,9 @@
 import Foundation
 import CoreData
 
+///
+/// Model representing a single Amiibo.
+///
 public class Amiibo: NSManagedObject {
 
     // MARK: - Properties -

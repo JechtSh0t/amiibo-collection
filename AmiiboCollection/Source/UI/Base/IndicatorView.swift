@@ -12,13 +12,23 @@ import UIKit
 ///
 class IndicatorView: UIView {
     
+    // MARK: - Properties -
+    
+    /// View that displays a symbol in the center.
     private var imageView: UIImageView?
+    
+    // MARK: - Setup -
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
         isHidden = true
     }
+}
+
+// MARK: - Show/Hide -
+
+extension IndicatorView {
     
     ///
     /// Shows the view, configured for the desired symbol.

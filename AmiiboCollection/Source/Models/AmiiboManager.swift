@@ -32,16 +32,21 @@ final class AmiiboManager {
     
     // MARK: - Properties -
     
+    /// Responsible for managing objects in CoreData.
     var managedObjectContext: NSManagedObjectContext!
+    /// Object that handles *AmiiboManager* events.
+    weak var delegate: AmiiboManagerDelegate?
+    /// Contains all Amiibos, ignoring filter.
     private(set) var allAmiibos: [Amiibo] = [] { didSet { filterAmiibos(by: currentFilter) } }
+    /// The last filter set by the user.
     private var currentFilter: FilterType = .all
+    /// Contains onlt Amiibos that match the current filter.
     private(set) var filteredAmiibos: [Amiibo] = []
     /// The number of Amiibos that have been created by the user.
     private var creationCount: Int {
         get { UserDefaults.standard.value(forKey: "next-user-ID") as? Int ?? 0 }
         set { UserDefaults.standard.setValue(newValue, forKey: "next-user-ID") }
     }
-    weak var delegate: AmiiboManagerDelegate?
 }
 
 // MARK: - Fetching Amiibos -
@@ -64,6 +69,7 @@ extension AmiiboManager {
     
     ///
     /// Updates Amiibos with an API call to the server.
+    /// - warning: Since user-created Amiibos are not saved to the API, this method will remove all user-created Amiibos.
     ///
     func refreshAmiibos() {
         
@@ -158,6 +164,11 @@ extension AmiiboManager {
         case collection
     }
     
+    ///
+    /// Sets *filteredAmiibos* based on the current filter.
+    ///
+    /// - parameter filterType: The filter set by the user.
+    ///
     func filterAmiibos(by filterType: FilterType) {
         
         currentFilter = filterType
@@ -173,6 +184,11 @@ extension AmiiboManager {
 
 extension AmiiboManager {
     
+    ///
+    /// Gets purchase details for an Amiibo. If this Amiibo is not part of the collection, this method will return nil.
+    ///
+    /// - parameter amiibo: The Amiibo to get purchase details for.
+    ///
     func getPurchase(of amiibo: Amiibo) throws -> Purchase? {
         
         let fetchRequest = NSFetchRequest<Purchase>()
@@ -198,6 +214,12 @@ extension AmiiboManager {
         amiibo.purchase = purchase
     }
     
+    ///
+    /// Removes an Amiibo from the collection.
+    /// - note: This does not remove the Amiibo from the available list, but only from the user's saved collection.
+    ///
+    /// - parameter amiibo: The Amiibo to remove from the collection.
+    ///
     func removeFromCollection(_ amiibo: Amiibo) throws {
         
         guard let purchase = try? getPurchase(of: amiibo) else { return }
@@ -211,6 +233,12 @@ extension AmiiboManager {
 
 extension AmiiboManager {
     
+    ///
+    /// Creates a new Amiibo with data entered by the user.
+    ///
+    /// - parameter name: The name of the new Amiibo.
+    /// - parameter image: If the user took a picture of the new Amiibo, it is passed here.
+    ///
     func createAmiibo(withName name: String, image: UIImage?) throws -> Amiibo {
         
         let tailValue = String(format: "%08d", creationCount)
@@ -235,6 +263,9 @@ extension AmiiboManager {
         let amiibo: [CodableAmiibo]
     }
 
+    ///
+    /// Represent a single Amiibo from the API. For the rest of the application, the *Amiibo* class is used.
+    ///
     struct CodableAmiibo: Decodable {
         
         let head: String

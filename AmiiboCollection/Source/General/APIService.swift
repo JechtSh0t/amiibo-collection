@@ -11,14 +11,16 @@ import Foundation
 
 protocol APIServiceDelegate {
     
+    /// Called when an API returns valid data.
     func apiService(_ manager: APIService, didReceiveData data: Data, request: URLRequest)
+    /// Called when there is an error fetching data from an API.
     func apiService(_ manager: APIService, didEncounterError error: Error, request: URLRequest)
 }
 
 // MARK: - Class -
 
 ///
-/// Handles API calls.
+/// Handles API calls. All delegate methods are called on the main thread.
 ///
 final class APIService {
     
