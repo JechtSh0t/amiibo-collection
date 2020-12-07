@@ -34,6 +34,7 @@ final class AmiiboDetailsViewController: PopoverViewController {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var gameSeriesLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
+    @IBOutlet private weak var purchaseDateLabel: UILabel!
     @IBOutlet private weak var actionButton: UIButton!
     
     // MARK: - Setup -
@@ -60,10 +61,13 @@ final class AmiiboDetailsViewController: PopoverViewController {
             imageView.image = UIImage(named: defaultImageName)
         }
         
-        if isPurchased {
+        purchaseDateLabel.isHidden = !isPurchased
+        if let purchaseDate = amiibo.purchase?.date {
             let checkmark = traitCollection.userInterfaceStyle == .light ? UIImage(named: "checkmark-light")! : UIImage(named: "checkmark-dark")!
             purchaseIndicatorView.show(checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false)
+            purchaseDateLabel.text = "Purchased: \(Date.displayFormatter.string(from: purchaseDate))"
         }
+        
         nameLabel.text = amiibo.name
         gameSeriesLabel.text = amiibo.gameSeries
         releaseDateLabel.text = "Released: \(amiibo.northAmericaRelease)"

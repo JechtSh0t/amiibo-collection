@@ -25,13 +25,8 @@ public class Amiibo: NSManagedObject {
     /// The date when the Amiibo was released in North America, in a user-friendly format.
     var northAmericaRelease: String {
                 
-        let decoder = DateFormatter()
-        decoder.dateFormat = "yyyy-MM-dd"
-        guard let releaseString = releaseDates["na"] as? String, let date = decoder.date(from: releaseString) else { return "N/A" }
-        
-        let encoder = DateFormatter()
-        encoder.dateFormat = "MM/dd/yy"
-        return encoder.string(from: date)
+        guard let releaseString = releaseDates["na"] as? String, let date = Date.storageFormatter.date(from: releaseString) else { return "N/A" }
+        return Date.displayFormatter.string(from: date)
     }
     
     // MARK: - Initializers -
@@ -47,7 +42,8 @@ public class Amiibo: NSManagedObject {
         amiiboSeries = "User Created"
         gameSeries = "User Created"
         self.imagePath = containsImage ? "icon_\(head)-\(tail)" : nil
-        releaseDates = NSDictionary()
+        let encodedDate = Date.storageFormatter.string(from: Date())
+        releaseDates = ["na": encodedDate]
         type = "Unknown"
     }
     

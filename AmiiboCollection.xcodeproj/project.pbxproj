@@ -38,6 +38,7 @@
 		13B06F0E257B061B00A76BAB /* bauhaus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F0D257B061300A76BAB /* bauhaus.ttf */; };
 		13E68EF2257E16AC008D0F02 /* CreateAmiiboViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */; };
 		13E68EF6257E24C9008D0F02 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */; };
+		13E68EFA257E7160008D0F02 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF9257E7160008D0F02 /* Date+Extensions.swift */; };
 		13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */; };
 		13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB3255BB61600611FBF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		13B06F0D257B061300A76BAB /* bauhaus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bauhaus.ttf; sourceTree = "<group>"; };
 		13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAmiiboViewController.swift; sourceTree = "<group>"; };
 		13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		13E68EF9257E7160008D0F02 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		13F22CB3255BB61600611FBF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 				139ED3B9255B8CEF00F9BB7A /* UIImageView+Extensions.swift */,
 				13A284EB255BB8A6003E940B /* UIColor+Extensions.swift */,
 				13B06F02257A74D600A76BAB /* UIButton+Extensions.swift */,
+				13E68EF9257E7160008D0F02 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				13A5B7E3257C393E0072A6EB /* Purchase.swift in Sources */,
 				137C1741255BD693003702B2 /* BounceAnimationController.swift in Sources */,
 				139ED38A255B67C200F9BB7A /* AppDelegate.swift in Sources */,
+				13E68EFA257E7160008D0F02 /* Date+Extensions.swift in Sources */,
 				13A5B7DC257C10730072A6EB /* Amiibo+CoreDataProperties.swift in Sources */,
 				139ED3AC255B7D2500F9BB7A /* ImageManager.swift in Sources */,
 				13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */,
