@@ -39,6 +39,8 @@
 		13E68EF2257E16AC008D0F02 /* CreateAmiiboViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */; };
 		13E68EF6257E24C9008D0F02 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */; };
 		13E68EFA257E7160008D0F02 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF9257E7160008D0F02 /* Date+Extensions.swift */; };
+		13E68EFF257E8541008D0F02 /* smb-coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13E68EFD257E8541008D0F02 /* smb-coin.wav */; };
+		13E68F03257E861F008D0F02 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68F02257E861F008D0F02 /* SoundManager.swift */; };
 		13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */; };
 		13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB3255BB61600611FBF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAmiiboViewController.swift; sourceTree = "<group>"; };
 		13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		13E68EF9257E7160008D0F02 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		13E68EFD257E8541008D0F02 /* smb-coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "smb-coin.wav"; sourceTree = "<group>"; };
+		13E68F02257E861F008D0F02 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		13F22CB3255BB61600611FBF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				139ED3AB255B7D2500F9BB7A /* ImageManager.swift */,
+				13E68F02257E861F008D0F02 /* SoundManager.swift */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		139ED3B0255B7F1D00F9BB7A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				13E68EFC257E8536008D0F02 /* Sound */,
 				13A5B7F0257C3A040072A6EB /* Font */,
 				139ED38F255B67C200F9BB7A /* Main.storyboard */,
 				139ED394255B67C500F9BB7A /* LaunchScreen.storyboard */,
@@ -267,6 +273,14 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
+		13E68EFC257E8536008D0F02 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				13E68EFD257E8541008D0F02 /* smb-coin.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		13F22CB0255BB5B600611FBF /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E68EFF257E8541008D0F02 /* smb-coin.wav in Resources */,
 				13B06F0E257B061B00A76BAB /* bauhaus.ttf in Resources */,
 				13B06F0A257B022200A76BAB /* bauhaus-bold.ttf in Resources */,
 				13B06F0B257B022200A76BAB /* pretendo.ttf in Resources */,
@@ -355,6 +370,7 @@
 				13B06EFA25798D6300A76BAB /* AmiiboDetailsViewController.swift in Sources */,
 				137C1750255BE39A003702B2 /* GradientView.swift in Sources */,
 				139ED3BA255B8CEF00F9BB7A /* UIImageView+Extensions.swift in Sources */,
+				13E68F03257E861F008D0F02 /* SoundManager.swift in Sources */,
 				139ED38E255B67C200F9BB7A /* AmiiboCollectionViewController.swift in Sources */,
 				137C174B255BE354003702B2 /* DimmingPresentationController.swift in Sources */,
 				13A284EC255BB8A6003E940B /* UIColor+Extensions.swift in Sources */,

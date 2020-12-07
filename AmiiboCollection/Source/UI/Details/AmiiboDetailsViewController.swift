@@ -149,6 +149,7 @@ extension AmiiboDetailsViewController {
             let checkmark = traitCollection.userInterfaceStyle == .light ? UIImage(named: "checkmark-light")! : UIImage(named: "checkmark-dark")!
             setActionButton(enabled: false)
             purchaseIndicatorView.show(checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: true)
+            SoundManager.shared.playSound("smb-coin")
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                 self.dismiss(animated: true, completion: nil)
@@ -166,8 +167,9 @@ extension AmiiboDetailsViewController {
         do {
             
             try AmiiboManager.shared.removeFromCollection(amiibo)
-            purchaseIndicatorView.hide(animated: true)
+            
             setActionButton(enabled: false)
+            purchaseIndicatorView.hide(animated: true)
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                 self.dismiss(animated: true, completion: nil)

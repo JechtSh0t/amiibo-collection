@@ -128,6 +128,7 @@ extension CreateAmiiboViewController {
         do {
             let amiibo = try AmiiboManager.shared.createAmiibo(withName: nameTextField.text!, image: imageView.image)
             try AmiiboManager.shared.addToCollection(amiibo)
+            SoundManager.shared.playSound("smb-coin")
             delegate?.createAmiiboViewController(self, didCreateAmiibo: amiibo)
             dismiss(animated: true, completion: nil)
         } catch {
