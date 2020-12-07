@@ -15,7 +15,7 @@ final class AmiiboCollectionViewController: BaseViewController {
     // MARK: - Properties -
     
     /// The current size of collection cells. This changes with the orientation of the UI.
-    private var cellSize: CGSize!
+    private var cellSize = CGSize.zero
     /// The last cell that was selected, if a popover is active.
     private var selectedIndexPath: IndexPath?
     /// Shortcut for accessing Amiibos.
