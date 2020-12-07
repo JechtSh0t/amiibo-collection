@@ -15,7 +15,10 @@ public class Amiibo: NSManagedObject {
     /// Unique identifier for the Amiibo.
     var identifier: String { return head + tail }
     /// Download URL for the image.
-    var imageSource: URL { return URL(string: imagePath)! }
+    var imageSource: URL? {
+        guard let imagePath = imagePath else { return nil}
+        return URL(string: imagePath)
+    }
     /// Contains details about the purchase of the Amiibo.
     var purchase: Purchase?
     
@@ -33,18 +36,33 @@ public class Amiibo: NSManagedObject {
     
     // MARK: - Initializers -
     
+    convenience init(name: String, tailValue: String, containsImage: Bool, context: NSManagedObjectContext) {
+        
+        self.init(context: context)
+        
+        head = "FFFFFFFF"
+        tail = tailValue
+        self.name = name
+        character = name
+        amiiboSeries = "User Created"
+        gameSeries = "User Created"
+        self.imagePath = containsImage ? "icon_\(head)-\(tail)" : nil
+        releaseDates = NSDictionary()
+        type = "Unknown"
+    }
+    
     convenience init(_ codableAmiibo: AmiiboManager.CodableAmiibo, context: NSManagedObjectContext) {
         
         self.init(context: context)
         
-        amiiboSeries = codableAmiibo.amiiboSeries
-        character = codableAmiibo.character
-        gameSeries = codableAmiibo.gameSeries
         head = codableAmiibo.head
-        imagePath = codableAmiibo.image
-        name = codableAmiibo.name
-        releaseDates = codableAmiibo.release as NSDictionary
         tail = codableAmiibo.tail
+        name = codableAmiibo.name
+        character = codableAmiibo.character
+        amiiboSeries = codableAmiibo.amiiboSeries
+        gameSeries = codableAmiibo.gameSeries
+        imagePath = codableAmiibo.image
+        releaseDates = codableAmiibo.release as NSDictionary
         type = codableAmiibo.type
     }
 }

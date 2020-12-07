@@ -18,7 +18,7 @@ extension Amiibo {
     @NSManaged public var character: String
     @NSManaged public var gameSeries: String
     @NSManaged public var head: String
-    @NSManaged public var imagePath: String
+    @NSManaged public var imagePath: String?
     @NSManaged public var name: String
     @NSManaged public var releaseDates: NSDictionary
     @NSManaged public var tail: String

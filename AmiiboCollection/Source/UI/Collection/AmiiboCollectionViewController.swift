@@ -25,6 +25,7 @@ final class AmiiboCollectionViewController: BaseViewController {
     // MARK: - UI -
     
     @IBOutlet private weak var titleImageView: UIImageView!
+    @IBOutlet private weak var createButton: UIButton!
     @IBOutlet private weak var filterSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -55,6 +56,7 @@ final class AmiiboCollectionViewController: BaseViewController {
         
         super.lightStyle()
         titleImageView.image = UIImage(named: "amiibo-light")
+        createButton.tintColor = .black
         
         let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
@@ -66,6 +68,7 @@ final class AmiiboCollectionViewController: BaseViewController {
         
         super.darkStyle()
         titleImageView.image = UIImage(named: "amiibo-dark")
+        createButton.tintColor = .white
         
         let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
@@ -149,14 +152,30 @@ extension AmiiboCollectionViewController: UICollectionViewDataSource, UICollecti
     }
 }
 
-// MARK: - Popover -
+// MARK: - Popovers -
 
-extension AmiiboCollectionViewController: AmiiboDetailsViewControllerDelegate {
+extension AmiiboCollectionViewController: CreateAmiiboViewControllerDelegate, AmiiboDetailsViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let amiiboDetailsVC = segue.destination as? AmiiboDetailsViewController, let selectedIndexPath = selectedIndexPath else { return }
-        amiiboDetailsVC.configure(for: amiibos[selectedIndexPath.row], delegate: self)
+        switch segue.identifier {
+        
+        case "showCreate":
+            guard let createAmiiboVC = segue.destination as? CreateAmiiboViewController else { return }
+            createAmiiboVC.configure(delegate: self)
+            
+        case "showDetails":
+            guard let amiiboDetailsVC = segue.destination as? AmiiboDetailsViewController, let selectedIndexPath = selectedIndexPath else { return }
+            amiiboDetailsVC.configure(for: amiibos[selectedIndexPath.row], delegate: self)
+            
+        default: break
+        }
+    }
+    
+    func createAmiiboViewController(_ viewController: CreateAmiiboViewController, didCreateAmiibo amiibo: Amiibo) {
+        
+        AmiiboManager.shared.filterAmiibos(by: selectedFilterType)
+        collectionView.reloadData()
     }
     
     func amiiboDetailsViewControllerWillDismiss(_ viewController: AmiiboDetailsViewController) {

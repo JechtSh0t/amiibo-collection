@@ -5,7 +5,7 @@
 //  Created by JechtSh0t on 12/2/20.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 // MARK: - Delegate -
@@ -36,6 +36,11 @@ final class AmiiboManager {
     private(set) var allAmiibos: [Amiibo] = [] { didSet { filterAmiibos(by: currentFilter) } }
     private var currentFilter: FilterType = .all
     private(set) var filteredAmiibos: [Amiibo] = []
+    /// The number of Amiibos that have been created by the user.
+    private var creationCount: Int {
+        get { UserDefaults.standard.value(forKey: "next-user-ID") as? Int ?? 0 }
+        set { UserDefaults.standard.setValue(newValue, forKey: "next-user-ID") }
+    }
     weak var delegate: AmiiboManagerDelegate?
 }
 
@@ -184,7 +189,7 @@ extension AmiiboManager {
     ///
     /// - parameter amiibo: The Amiibo to purchase.
     ///
-    func purchase(_ amiibo: Amiibo) throws {
+    func addToCollection(_ amiibo: Amiibo) throws {
         
         let purchase = Purchase(context: managedObjectContext)
         purchase.identifier = amiibo.identifier
@@ -193,12 +198,32 @@ extension AmiiboManager {
         amiibo.purchase = purchase
     }
     
-    func refund(_ amiibo: Amiibo) throws {
+    func removeFromCollection(_ amiibo: Amiibo) throws {
         
         guard let purchase = try? getPurchase(of: amiibo) else { return }
         managedObjectContext.delete(purchase)
         try managedObjectContext.save()
         amiibo.purchase = nil
+    }
+}
+
+// MARK: - Creation -
+
+extension AmiiboManager {
+    
+    func createAmiibo(withName name: String, image: UIImage?) throws -> Amiibo {
+        
+        let tailValue = String(format: "%08d", creationCount)
+        let amiibo = Amiibo(name: name, tailValue: tailValue, containsImage: image != nil, context: managedObjectContext)
+        try managedObjectContext.save()
+        creationCount += 1
+        allAmiibos.append(amiibo)
+        
+        if let image = image, let imagePath = amiibo.imagePath {
+            ImageManager.shared.saveImageToCache(image, name: imagePath)
+        }
+        
+        return amiibo
     }
 }
 
@@ -212,14 +237,14 @@ extension AmiiboManager {
 
     struct CodableAmiibo: Decodable {
         
-        let amiiboSeries: String
-        let character: String
-        let gameSeries: String
         let head: String
-        let image: String
-        let name: String
-        let release: [String: String?]
         let tail: String
+        let name: String
+        let character: String
+        let amiiboSeries: String
+        let gameSeries: String
+        let image: String
+        let release: [String: String?]
         let type: String
     }
 }

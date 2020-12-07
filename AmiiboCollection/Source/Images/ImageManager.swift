@@ -72,7 +72,13 @@ extension ImageManager {
         let components = source.path.components(separatedBy: "/")
         guard components.count == 6 else { return }
        
-        try? FileManager.default.copyItem(at: temporaryLocation, to: imageDirectory.appendingPathComponent(components[5]).appendingPathExtension("png"))
+        try? FileManager.default.copyItem(at: temporaryLocation, to: imageDirectory.appendingPathComponent(components[5]))
+    }
+    
+    func saveImageToCache(_ image: UIImage, name: String) {
+        
+        let imageData = image.jpegData(compressionQuality: 1.0)
+        try! imageData!.write(to: imageDirectory.appendingPathComponent(name).appendingPathExtension("png"))
     }
     
     ///
@@ -82,10 +88,17 @@ extension ImageManager {
     ///
     func loadImageFromCache(_ source: URL) -> UIImage? {
         
+        var filePath: String!
+            
         let components = source.path.components(separatedBy: "/")
-        guard components.count == 6 else { return nil }
         
-        guard let data = FileManager.default.contents(atPath: imageDirectory.appendingPathComponent(components[5]).appendingPathExtension("png").path) else { return nil }
+        switch components.count {
+        case 6: filePath = imageDirectory.appendingPathComponent(components[5]).path
+        case 1: filePath = imageDirectory.appendingPathComponent(components[0]).appendingPathExtension("png").path
+        default: return nil
+        }
+        
+        guard let data = FileManager.default.contents(atPath: filePath) else { return nil }
         return UIImage(data: data)
     }
 }

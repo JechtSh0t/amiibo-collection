@@ -36,6 +36,8 @@
 		13B06F0A257B022200A76BAB /* bauhaus-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F08257B01CF00A76BAB /* bauhaus-bold.ttf */; };
 		13B06F0B257B022200A76BAB /* pretendo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F09257B01CF00A76BAB /* pretendo.ttf */; };
 		13B06F0E257B061B00A76BAB /* bauhaus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B06F0D257B061300A76BAB /* bauhaus.ttf */; };
+		13E68EF2257E16AC008D0F02 /* CreateAmiiboViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */; };
+		13E68EF6257E24C9008D0F02 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */; };
 		13F22CB2255BB5EE00611FBF /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */; };
 		13F22CB4255BB61600611FBF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F22CB3255BB61600611FBF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,8 @@
 		13B06F08257B01CF00A76BAB /* bauhaus-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bauhaus-bold.ttf"; sourceTree = "<group>"; };
 		13B06F09257B01CF00A76BAB /* pretendo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pretendo.ttf; sourceTree = "<group>"; };
 		13B06F0D257B061300A76BAB /* bauhaus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bauhaus.ttf; sourceTree = "<group>"; };
+		13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAmiiboViewController.swift; sourceTree = "<group>"; };
+		13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		13F22CB3255BB61600611FBF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +202,7 @@
 		13A5B7E7257C395A0072A6EB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				13E68EF0257E1691008D0F02 /* Create */,
 				13F22CB0255BB5B600611FBF /* Base */,
 				137C1748255BE34B003702B2 /* Presentation */,
 				13A5B7E8257C39700072A6EB /* Collection */,
@@ -251,6 +256,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		13E68EF0257E1691008D0F02 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				13E68EF1257E16AC008D0F02 /* CreateAmiiboViewController.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		13F22CB0255BB5B600611FBF /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +271,7 @@
 				13F22CB1255BB5EE00611FBF /* BaseCollectionCell.swift */,
 				13F22CB3255BB61600611FBF /* BaseViewController.swift */,
 				137C1752255BE661003702B2 /* ProgressViewController.swift */,
+				13E68EF5257E24C9008D0F02 /* PopoverViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -351,8 +365,10 @@
 				139ED39F255B685F00F9BB7A /* APIService.swift in Sources */,
 				139ED38C255B67C200F9BB7A /* SceneDelegate.swift in Sources */,
 				13B06F03257A74D600A76BAB /* UIButton+Extensions.swift in Sources */,
+				13E68EF6257E24C9008D0F02 /* PopoverViewController.swift in Sources */,
 				137C1753255BE661003702B2 /* ProgressViewController.swift in Sources */,
 				137C174C255BE354003702B2 /* FadeOutAnimationController.swift in Sources */,
+				13E68EF2257E16AC008D0F02 /* CreateAmiiboViewController.swift in Sources */,
 				13A5B7DB257C10730072A6EB /* Amiibo.swift in Sources */,
 				1363E2C1257C0DE00078529D /* AmiiboModels.xcdatamodeld in Sources */,
 				139ED3A5255B729D00F9BB7A /* BSGError.swift in Sources */,

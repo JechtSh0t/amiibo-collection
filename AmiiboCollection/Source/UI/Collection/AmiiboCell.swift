@@ -49,10 +49,16 @@ final class AmiiboCell: BaseCollectionCell {
         self.amiibo = amiibo
         nameLabel.text = amiibo.name
         
-        if let cachedImage = ImageManager.shared.loadImage(amiibo.imageSource) {
-            imageView.image = cachedImage
+        if let imageSource = amiibo.imageSource {
+            
+            if let cachedImage = ImageManager.shared.loadImage(imageSource) {
+                imageView.image = cachedImage
+            } else {
+                activityIndicator = imageView.showActivityIndicator(style: .medium)
+            }
         } else {
-            activityIndicator = imageView.showActivityIndicator(style: .medium)
+            let defaultImageName = traitCollection.userInterfaceStyle == .light ? "amiibo-logo-light" : "amiibo-logo-dark"
+            imageView.image = UIImage(named: defaultImageName)
         }
         
         if amiibo.purchase != nil {

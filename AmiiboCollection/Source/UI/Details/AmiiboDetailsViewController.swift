@@ -11,13 +11,13 @@ import UIKit
 
 protocol AmiiboDetailsViewControllerDelegate: class {
     
-    /// Called right before *AmiiboDetailsViewController* is dismissed.
+    /// Called when *AmiiboDetailsViewController* is dismissed.
     func amiiboDetailsViewControllerWillDismiss(_ viewController: AmiiboDetailsViewController)
 }
 
 // MARK: - Class -
 
-final class AmiiboDetailsViewController: BaseViewController {
+final class AmiiboDetailsViewController: PopoverViewController {
     
     // MARK: - Properties -
     
@@ -29,6 +29,7 @@ final class AmiiboDetailsViewController: BaseViewController {
     
     @IBOutlet private weak var popoverView: UIView!
     @IBOutlet private weak var imageView: UIImageView!
+    private var activityIndicator: UIActivityIndicatorView?
     @IBOutlet private weak var purchaseIndicatorView: IndicatorView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var gameSeriesLabel: UILabel!
@@ -41,25 +42,30 @@ final class AmiiboDetailsViewController: BaseViewController {
         
         self.amiibo = amiibo
         self.delegate = delegate
-        
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        imageView.image = ImageManager.shared.loadImage(amiibo.imageSource)
+        if let imageSource = amiibo.imageSource {
+            
+            if let cachedImage = ImageManager.shared.loadImage(imageSource) {
+                imageView.image = cachedImage
+            } else {
+                activityIndicator = imageView.showActivityIndicator(style: .medium)
+            }
+        } else {
+            let defaultImageName = traitCollection.userInterfaceStyle == .light ? "amiibo-logo-light" : "amiibo-logo-dark"
+            imageView.image = UIImage(named: defaultImageName)
+        }
+        
         if isPurchased { purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false) }
         nameLabel.text = amiibo.name
         gameSeriesLabel.text = amiibo.gameSeries
         releaseDateLabel.text = "Released: \(amiibo.northAmericaRelease)"
         
         actionButton.setTitle(!isPurchased ? "Add to Collection" : "Remove", for: .normal)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        tapGesture.delegate = self
-        view.addGestureRecognizer(tapGesture)
     }
     
     override func style() {
@@ -78,28 +84,33 @@ final class AmiiboDetailsViewController: BaseViewController {
 
 // MARK: - Transition -
 
-extension AmiiboDetailsViewController: UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        DimmingPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        BounceAnimationController()
-    }
-    
-    @objc private func handleTap() {
+extension AmiiboDetailsViewController {
+
+    override func viewWillDisappear(_ animated: Bool) {
         
-        delegate?.amiiboDetailsViewControllerWillDismiss(self)
-        dismiss(animated: true, completion: nil)
+        super.viewWillDisappear(animated)
+        self.delegate?.amiiboDetailsViewControllerWillDismiss(self)
     }
+}
+
+// MARK: - Image Loading -
+
+extension AmiiboDetailsViewController {
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return touch.view == view
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        FadeOutAnimationController()
+    ///
+    /// Called when *ImageManager* has found an image. If the image url matches the one for this cell, it will be used.
+    ///
+    @objc private func imageLoaded(_ notification: Notification) {
+        
+        guard let source = notification.userInfo?["source"] as? URL, source == amiibo.imageSource else { return }
+        
+        if let image = notification.userInfo?["image"] as? UIImage {
+            imageView.image = image
+        }
+        
+        if let activityIndicator = activityIndicator {
+            imageView.hideActivityIndicator(activityIndicator)
+        }
     }
 }
 
@@ -117,12 +128,10 @@ extension AmiiboDetailsViewController {
     private func purchaseAmiibo() {
         
         do {
-            try AmiiboManager.shared.purchase(amiibo)
+            try AmiiboManager.shared.addToCollection(amiibo)
             purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: true)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-                
-                self.delegate?.amiiboDetailsViewControllerWillDismiss(self)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
                 self.dismiss(animated: true, completion: nil)
             })
         } catch {
@@ -137,13 +146,11 @@ extension AmiiboDetailsViewController {
         
         do {
             
-            try AmiiboManager.shared.refund(amiibo)
+            try AmiiboManager.shared.removeFromCollection(amiibo)
             purchaseIndicatorView.hide()
             purchaseIndicatorView.show(.xmark, color: .nintendoRed, backgroundColor: .clear, animated: true)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-                
-                self.delegate?.amiiboDetailsViewControllerWillDismiss(self)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
                 self.dismiss(animated: true, completion: nil)
             })
         } catch {
