@@ -18,9 +18,9 @@ extension UIImageView {
     ///
     func showActivityIndicator(style: UIActivityIndicatorView.Style) -> UIActivityIndicatorView {
         
-        image = UIImage(systemName: "questionmark.diamond")
+        image = nil
         let activityIndicator = UIActivityIndicatorView(style: style)
-        activityIndicator.color = UIColor.black
+        activityIndicator.color = traitCollection.userInterfaceStyle == .light ? .black : .white
         addSubview(activityIndicator)
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Main container for CoreData.
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "AmiiboModel")
+        let container = NSPersistentContainer(name: "AmiiboModels")
         container.loadPersistentStores { (storeDescription, error)
             in
             if let error = error {

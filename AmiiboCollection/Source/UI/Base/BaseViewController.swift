@@ -61,6 +61,7 @@ extension BaseViewController {
         
         guard progressViewController == nil else { return }
         let progressViewController = ProgressViewController()
+        progressViewController.color = traitCollection.userInterfaceStyle == .light ? .black : .white
         progressViewController.modalPresentationStyle = .overCurrentContext
         present(progressViewController, animated: false, completion: nil)
         self.progressViewController = progressViewController

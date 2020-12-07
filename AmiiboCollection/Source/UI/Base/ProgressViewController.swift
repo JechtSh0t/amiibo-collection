@@ -12,6 +12,8 @@ final class ProgressViewController: UIViewController {
     
     /// The active indicator, if there is one.
     private var activityIndicator: UIActivityIndicatorView!
+    /// The color of the progress indicator.
+    var color: UIColor = .black
     
     // MARK: - Setup -
     
@@ -20,7 +22,7 @@ final class ProgressViewController: UIViewController {
         super.viewDidLoad()
         
         activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = UIColor.black
+        activityIndicator.color = color
         activityIndicator.hidesWhenStopped = true
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         

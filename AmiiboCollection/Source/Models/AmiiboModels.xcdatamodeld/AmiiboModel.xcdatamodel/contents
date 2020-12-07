@@ -11,7 +11,12 @@
         <attribute name="tail" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
     </entity>
+    <entity name="Purchase" representedClassName=".Purchase" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Amiibo" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="Purchase" positionX="-63" positionY="54" width="128" height="59"/>
     </elements>
 </model>

@@ -20,6 +20,7 @@ final class AmiiboCell: BaseCollectionCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     private var activityIndicator: UIActivityIndicatorView?
+    @IBOutlet private weak var purchaseIndicatorView: IndicatorView!
     @IBOutlet private weak var nameLabel: UILabel!
     
     // MARK: - Setup -
@@ -43,6 +44,8 @@ final class AmiiboCell: BaseCollectionCell {
     
     func configure(for amiibo: Amiibo) {
         
+        contentView.alpha = amiibo.purchase != nil ? 1.0 : 0.4
+        
         self.amiibo = amiibo
         nameLabel.text = amiibo.name
         
@@ -50,6 +53,12 @@ final class AmiiboCell: BaseCollectionCell {
             imageView.image = cachedImage
         } else {
             activityIndicator = imageView.showActivityIndicator(style: .medium)
+        }
+        
+        if amiibo.purchase != nil {
+            purchaseIndicatorView.show(.checkmark, color: .nintendoGreen, backgroundColor: .clear, animated: false)
+        } else {
+            purchaseIndicatorView.hide()
         }
     }
 }

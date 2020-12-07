@@ -33,7 +33,7 @@ final class AmiiboManager {
     // MARK: - Properties -
     
     var managedObjectContext: NSManagedObjectContext!
-    private(set) var allAmiibos: [Amiibo] = []
+    private(set) var allAmiibos: [Amiibo] = [] { didSet { allAmiibos.forEach { $0.purchase = try? getPurchase(of: $0) }} }
     weak var delegate: AmiiboManagerDelegate?
 }
 
@@ -105,7 +105,7 @@ extension AmiiboManager: APIServiceDelegate {
 extension AmiiboManager {
     
     ///
-    /// Gets local Amiibos stored with Core Data.
+    /// Gets local Amiibos stored with Core Data. Amiibos are fetched in order sorted by identifier.
     ///
     private func getAmiibosFromLocalStorage() throws -> [Amiibo] {
         
@@ -120,6 +120,44 @@ extension AmiiboManager {
         guard !amiibos.isEmpty else { throw BSGError(type: .data) }
         
         return amiibos
+    }
+}
+
+// MARK: - Purchases -
+
+extension AmiiboManager {
+    
+    func getPurchase(of amiibo: Amiibo) throws -> Purchase? {
+        
+        let fetchRequest = NSFetchRequest<Purchase>()
+        fetchRequest.entity = Purchase.entity()
+        let predicate = NSPredicate(format: "identifier == %@", amiibo.identifier)
+        fetchRequest.predicate = predicate
+        
+        let purchases = try managedObjectContext.fetch(fetchRequest)
+        return purchases.isEmpty ? nil : purchases[0]
+    }
+    
+    ///
+    /// Adds an amiibo to the purchased collection.
+    ///
+    /// - parameter amiibo: The Amiibo to purchase.
+    ///
+    func purchase(_ amiibo: Amiibo) throws {
+        
+        let purchase = Purchase(context: managedObjectContext)
+        purchase.identifier = amiibo.identifier
+        purchase.date = Date()
+        try managedObjectContext.save()
+        amiibo.purchase = purchase
+    }
+    
+    func refund(_ amiibo: Amiibo) throws {
+        
+        guard let purchase = try? getPurchase(of: amiibo) else { return }
+        managedObjectContext.delete(purchase)
+        try managedObjectContext.save()
+        amiibo.purchase = nil
     }
 }
 

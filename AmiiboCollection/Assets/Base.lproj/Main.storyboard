@@ -66,14 +66,17 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wq8-X7-Hes" userLabel="stackView">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wq8-X7-Hes" userLabel="stackView">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvi-3k-r5b" userLabel="imageView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="77"/>
+                                                                    <rect key="frame" x="25.5" y="0.0" width="77" height="77"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="dvi-3k-r5b" secondAttribute="height" multiplier="1:1" id="L5V-3P-QZS"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd1-Sl-XGp" userLabel="nameLabel">
-                                                                    <rect key="frame" x="0.0" y="77" width="128" height="51"/>
+                                                                    <rect key="frame" x="15.5" y="77" width="97.5" height="51"/>
                                                                     <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -86,17 +89,28 @@
                                                                 <constraint firstItem="dvi-3k-r5b" firstAttribute="height" secondItem="Wq8-X7-Hes" secondAttribute="height" multiplier="0.6" id="C7y-Hr-HgD"/>
                                                             </constraints>
                                                         </stackView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iQ-s4-gPg" userLabel="purchaseIndicatorView" customClass="IndicatorView" customModule="AmiiboCollection" customModuleProvider="target">
+                                                            <rect key="frame" x="107" y="2" width="19" height="19"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="6iQ-s4-gPg" secondAttribute="height" multiplier="1:1" id="BEB-hh-foy"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Wq8-X7-Hes" secondAttribute="bottom" id="96T-RJ-a2h"/>
+                                                        <constraint firstItem="6iQ-s4-gPg" firstAttribute="top" secondItem="kU9-hm-lq2" secondAttribute="top" constant="2" id="L9Q-cq-B2R"/>
+                                                        <constraint firstItem="6iQ-s4-gPg" firstAttribute="width" secondItem="dvi-3k-r5b" secondAttribute="width" multiplier="0.25" id="SIM-4O-blz"/>
                                                         <constraint firstItem="Wq8-X7-Hes" firstAttribute="top" secondItem="kU9-hm-lq2" secondAttribute="top" id="Yk9-dY-4L1"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wq8-X7-Hes" secondAttribute="trailing" id="i2u-Yb-kmy"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6iQ-s4-gPg" secondAttribute="trailing" constant="2" id="pKH-Wp-IMY"/>
                                                         <constraint firstItem="Wq8-X7-Hes" firstAttribute="leading" secondItem="kU9-hm-lq2" secondAttribute="leading" id="rwi-xs-DVV"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <connections>
                                                     <outlet property="imageView" destination="dvi-3k-r5b" id="0h9-pz-5Ng"/>
                                                     <outlet property="nameLabel" destination="sd1-Sl-XGp" id="h95-ru-4rn"/>
+                                                    <outlet property="purchaseIndicatorView" destination="6iQ-s4-gPg" id="ST6-fp-ea6"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -138,7 +152,7 @@
             <objects>
                 <viewController storyboardIdentifier="amiiboPopoverViewController" id="ZfH-TL-zR5" customClass="AmiiboDetailsViewController" customModule="AmiiboCollection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rwd-t9-WGC">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-nL-ZMx" userLabel="popoverView">
@@ -147,8 +161,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-UW-YQD" userLabel="popoverStack">
                                         <rect key="frame" x="18" y="21.5" width="324" height="388.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="od3-E2-vNg" userLabel="imageView">
-                                                <rect key="frame" x="84" y="1.5" width="156" height="152.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="od3-E2-vNg" userLabel="imageView">
+                                                <rect key="frame" x="84" y="1.5" width="156" height="153"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="height" multiplier="1:1" id="S3n-gJ-qmf"/>
                                                 </constraints>
@@ -164,7 +178,7 @@
                                                 <rect key="frame" x="73.5" y="176.5" width="177" height="144"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Blue Yarn Yoshi" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-3w-ibq" userLabel="nameLabel">
-                                                        <rect key="frame" x="-73.5" y="0.0" width="250.5" height="31.5"/>
+                                                        <rect key="frame" x="-73.5" y="0.0" width="250.5" height="30.5"/>
                                                         <fontDescription key="fontDescription" name="BauhausITCbyBT-Bold" family="Bauhaus Md BT" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -173,7 +187,7 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Smash Bros" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0i-p2-iLt" userLabel="gameSeriesLabel">
-                                                        <rect key="frame" x="-73.5" y="35.5" width="250.5" height="19.5"/>
+                                                        <rect key="frame" x="-73.5" y="34.5" width="250.5" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -182,7 +196,7 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: 11/01/1991" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOY-Tv-QFD" userLabel="releaseDateLabel">
-                                                        <rect key="frame" x="-73.5" y="67" width="250.5" height="15.5"/>
+                                                        <rect key="frame" x="-73.5" y="70" width="250.5" height="19"/>
                                                         <fontDescription key="fontDescription" name="Bauhaus" family="Bauhaus" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -207,7 +221,7 @@
                                                 <rect key="frame" x="0.0" y="330.5" width="324" height="58"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9H-u2-cry" userLabel="selectionButton">
-                                                        <rect key="frame" x="67" y="0.0" width="190" height="58"/>
+                                                        <rect key="frame" x="84" y="0.0" width="156" height="58"/>
                                                         <fontDescription key="fontDescription" name="Pretendo" family="Pretendo" pointSize="16"/>
                                                         <state key="normal" title="Add to Collection">
                                                             <color key="titleColor" systemColor="systemGreenColor"/>
@@ -237,8 +251,8 @@
                                             <constraint firstItem="DU2-I8-enM" firstAttribute="width" secondItem="7MC-UW-YQD" secondAttribute="width" id="gSF-SP-Tkn"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-mf-zZA" customClass="CheckmarkView" customModule="AmiiboCollection" customModuleProvider="target">
-                                        <rect key="frame" x="129.5" y="48.5" width="101" height="101"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-mf-zZA" userLabel="purchaseIndicatorView" customClass="IndicatorView" customModule="AmiiboCollection" customModuleProvider="target">
+                                        <rect key="frame" x="303" y="21.5" width="39" height="38.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4fA-mf-zZA" secondAttribute="height" multiplier="1:1" id="fyH-m5-gvl"/>
@@ -250,14 +264,14 @@
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="height" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="0.9" id="2dX-V9-keI"/>
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="centerY" secondItem="OGI-nL-ZMx" secondAttribute="centerY" id="AGJ-ON-7ZJ"/>
                                     <constraint firstAttribute="width" secondItem="OGI-nL-ZMx" secondAttribute="height" multiplier="1:1.2" id="LZV-Qb-1cS"/>
-                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="centerY" secondItem="od3-E2-vNg" secondAttribute="centerY" id="M2g-cZ-PyC"/>
-                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="width" multiplier="0.65" id="Ov9-Py-Vh1"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="width" secondItem="od3-E2-vNg" secondAttribute="width" multiplier="0.25" id="Ov9-Py-Vh1"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="trailing" secondItem="7MC-UW-YQD" secondAttribute="trailing" id="SJj-Yv-OsJ"/>
                                     <constraint firstAttribute="width" constant="260" id="iLB-nx-jXy">
                                         <variation key="heightClass=regular-widthClass=regular" constant="360"/>
                                     </constraint>
-                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="centerX" secondItem="od3-E2-vNg" secondAttribute="centerX" id="kl3-cw-h1p"/>
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="centerX" secondItem="OGI-nL-ZMx" secondAttribute="centerX" id="lzk-ZG-FjH"/>
                                     <constraint firstItem="7MC-UW-YQD" firstAttribute="width" secondItem="OGI-nL-ZMx" secondAttribute="width" multiplier="0.9" id="pZ4-Ap-Czb"/>
+                                    <constraint firstItem="4fA-mf-zZA" firstAttribute="top" secondItem="7MC-UW-YQD" secondAttribute="top" id="wAX-Tr-ugq"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -271,11 +285,11 @@
                     <navigationItem key="navigationItem" id="aTn-r7-5ko"/>
                     <connections>
                         <outlet property="actionButton" destination="f9H-u2-cry" id="gmm-o4-REn"/>
-                        <outlet property="checkmarkView" destination="4fA-mf-zZA" id="ckT-vb-hiB"/>
                         <outlet property="gameSeriesLabel" destination="m0i-p2-iLt" id="h3t-DW-7cd"/>
                         <outlet property="imageView" destination="od3-E2-vNg" id="yNV-sL-Y5F"/>
                         <outlet property="nameLabel" destination="ozu-3w-ibq" id="l75-1E-AwM"/>
                         <outlet property="popoverView" destination="OGI-nL-ZMx" id="JPz-gv-fID"/>
+                        <outlet property="purchaseIndicatorView" destination="4fA-mf-zZA" id="ckT-vb-hiB"/>
                         <outlet property="releaseDateLabel" destination="KOY-Tv-QFD" id="YZ3-nW-DVh"/>
                     </connections>
                 </viewController>
@@ -286,7 +300,7 @@
     </scenes>
     <resources>
         <image name="amiibo-light" width="341.5" height="119.5"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

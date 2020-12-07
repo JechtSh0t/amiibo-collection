@@ -11,9 +11,15 @@ import CoreData
 public class Amiibo: NSManagedObject {
 
     // MARK: - Properties -
-    
+
+    /// Unique identifier for the Amiibo.
+    var identifier: String { return head + tail }
+    /// Download URL for the image.
     var imageSource: URL { return URL(string: imagePath)! }
+    /// Contains details about the purchase of the Amiibo.
+    var purchase: Purchase?
     
+    /// The date when the Amiibo was released in North America, in a user-friendly format.
     var northAmericaRelease: String {
                 
         let decoder = DateFormatter()

@@ -113,10 +113,10 @@ extension AmiiboCollectionViewController: AmiiboDetailsViewControllerDelegate {
         amiiboDetailsVC.configure(for: amiibos[selectedIndexPath.row], delegate: self)
     }
     
-    func amiiboDetailsViewControllerDidExit(_ viewController: AmiiboDetailsViewController) {
+    func amiiboDetailsViewControllerWillDismiss(_ viewController: AmiiboDetailsViewController) {
         
         if let selectedIndexPath = selectedIndexPath {
-            collectionView.deselectItem(at: selectedIndexPath, animated: true)
+            collectionView.reloadItems(at: [selectedIndexPath])
             self.selectedIndexPath = nil
         }
     }
