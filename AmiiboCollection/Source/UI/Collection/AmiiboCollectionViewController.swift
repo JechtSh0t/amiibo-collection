@@ -71,7 +71,7 @@ final class AmiiboCollectionViewController: BaseViewController {
         super.lightStyle()
         titleImageView.image = UIImage(named: "amiibo-light")
         
-        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
+        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 22.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     }
     
@@ -80,14 +80,14 @@ final class AmiiboCollectionViewController: BaseViewController {
         super.darkStyle()
         titleImageView.image = UIImage(named: "amiibo-dark")
         
-        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 20.0 : 16.0)!
+        let font = UIFont(name: "bauhaus", size: traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular ? 22.0 : 16.0)!
         filterSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
     }
     
     private func calculateCellSize(viewSize: CGSize) -> CGSize {
         
         let cellsPerRow = viewSize.width > viewSize.height ? 5 : 3
-        let cellWidth = (viewSize.width * 0.75) / CGFloat(cellsPerRow)
+        let cellWidth = (viewSize.width * 0.80) / CGFloat(cellsPerRow)
         return CGSize(width: cellWidth, height: cellWidth * 1.2)
     }
 }
